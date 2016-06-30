@@ -1,0 +1,371 @@
+[[linux-software]]
+Linux Software
+--------------
+
+*Note:*
+
+command shown with prefix *$* are to be run on host machine (like ubuntu
+etc.)
+
+command shown with prefix *=>* are to be run on uboot prompte
+
+command shown with prefix *~#* are to be run on board after linux up.
+
+[[compilation]]
+Compilation
+~~~~~~~~~~~
+
+===========================
+
+*Steps:*
+
+\1. Extract the kernel and use the below commands to compile
+
+$ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- distclean
+
+$ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- warp7_defconfig
+
+$ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- zImage
+
+$ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- modules
+
+$ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf-
+imx7d-warp7-mipi-dsi.dtb
+
+\2. Extract and compile imx_usb_loader-master
+
+\3. usb imx_usb, to load uboot first time in the board.
+
+$ cd imx_usb_loader-master
+
+$ make
+
+$ ./imx_usb u-boot.imx
+
+\4. u-boot prompt will come. ( we are using minicom )
+
+\5. Run on uboot
+
+=> ums 0 mmc 0
+
+\6. Now you will able to see emmc of as storage device on your computer.
+
+\7. Use any standard utility to make partition table.
+
+\8. create 3 partitions (10MB(Fat32), 100MB(Fat32) and remaining space
+as ext4)
+
+\9. copy zImage to to the 100MB fat32 partition.
+
+10.rename and copy *imx7d-warp7-mipi-dsi.dtb* as *warp7.dtb* to the
+100MB fat32 partition.
+
+\11. copy the *rootfs_debian.tar.bz2* to the 3rd ext4 partition.
+
+\12. now install kernel modules to the rootfs as shown below.
+
+$ *sudo make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- modules_install
+INSTALL_MOD_PATH=/path_to_your_emmc_ext4_partition_mount*
+
+\13. now unmount the partitions using "**sudo umount /dev/sdX**"
+command.
+
+\14. in u-boot prompt, hit **Ctrl+c**, to cancel the mounted mmc.
+
+\15. in u-boot prompt, use *loadx* command to load *uboot* to ram.
+
+after loadx completed , press **ctrl+a**, then s to select xmodem for
+uboot transfer.
+
+=> loadx
+
+. save the uboot in emmc.
+
+=> mmc write 0x80800000 2 0x2a6
+
+*<CAUTION>*
+
+\16. now fuse the OTP. This command is one time only, be careful else it
+will brick the board .
+
+=> fuse prog 1 3 10002820
+
+\17. set bootcmd environment params as below .
+
+=> *setenv bootcmd 'setenv mmcroot /dev/mmcblk2p3 rootwait rw;setenv
+bootargs console=$\{console},$\{baudrate} root=$\{mmcroot};mw 30330218
+0;fatload mmc 0:2 0x80800000 zImage;fatload mmc 0:2 0x83000000
+warp7.dtb;bootz 0x80800000 - 0x83000000'*
+
+=> *saveenv*
+
+=> *run bootcmd*
+
+Now linux must be up and running.
+
+\18. using NET OVER USB, we build USB ethernet build as **module**.
+
+use below commands on the board to load the modules.
+
+Note: using static IP in your host system. We are using as below in
+*/etc/network/interfaces*
+
+*192.168.7.10, *
+
+*255.255.255.0, *
+
+*192.168.7.1*
+
+~# insmod /lib/modules/4.1.15/kernel/drivers/usb/gadget/libcomposite.ko
+
+~# insmod
+/lib/modules/4.1.15/kernel/drivers/usb/gadget/function/u_ether.ko
+
+~# insmod
+/lib/modules/4.1.15/kernel/drivers/usb/gadget/function/usb_f_rndis.ko
+
+~# insmod
+/lib/modules/4.1.15/kernel/drivers/usb/gadget/legacy/g_ether.ko
+
+~# ifup usb0
+
+[[testing]]
+Testing
+~~~~~~~~
+
+===========================
+
+[[testing-audio]]
+Testing Audio:
+^^^^^^^^^^^^^^
+
+*======================================================*
+
+listen audio from warp7:
+
+place an audio file (ex: input.wav) file in home directory,and run below
+command:
+
+*~#* *aplay input.wav *
+
+record audio usingwarp7:
+
+run below command, it will record audio file with 10 secs duration .
+
+*~#* *arecord -d 10 output.wav *
+
+to change volume control of headphone:
+
+below example shows to change volume to 100%
+
+*~# amixer set 'Headphone' 100%*
+
+to change gain control of mic:
+
+below example shows to change gain control to 100%
+
+*~# amixer set 'Mic' 100%*
+
+*Testing Battery Charger:*
+
+*======================================================*
+
+compile & run the "bc3770.c" from the utils folder.
+
+image:media/image93.png[image]
+
+[[testing-sensors]]
+Testing Sensors:
+^^^^^^^^^^^^^^^^
+
+*======================================================*
+
+The mpl3115a2 sensor consists of Pressure and Altimeter.
+
+The FXOS8700CQR1 sensor consists of Acclerometer and Magnetometer.
+
+The FXAS21002CQR1 sensor consists of Gyrometer:
+
+run "i2cdetect" command to scan i2c bus for devices.
+
+*UU* shows devices already binded to platform/drivers.
+
+image:media/image94.jpeg[image]
+
+To detect sensor identity status we will check for "**WHOAMI**" register
+values:
+
+execute below commands in terminal:
+
+*mpl3115a2:*
+
+*~#* i2cget -y 3 0x60 0x0C
+
+*0xc4*
+
+MPL3115A2 datasheet confirms the "WHOAMI" value.
+
+*FXOS8700CQR1*
+
+**~#**i2cget -y 3 0x1e 0x0D
+
+*0xc7*
+
+FXOS8700CQR1 datasheet confirms the "WHOAMI" value.
+
+*FXAS21002CQR1*
+
+$i2cget -y 3 0x20 0x0C
+
+*0xd7*
+
+FXAS21002CQR1 datasheet confirms the "WHOAMI" value.
+
+image:media/image95.png[image]
+
+With above detection we can confirm the sensor hardware is working.
+
+sample codes "detect_acclerometer.c","detect_gyrometer.c" and
+"detect_mpl3115.c" confirm the same.
+
+image:media/image96.png[image]
+
+we developed a simple bare-metal application in Linux to access mpl3115
+sensor.
+
+the same can be done for android/yocto platforms .
+
+the code "**mpl3115_temperature.c**" can be compiled and tested to get
+temperature values.
+
+you will get result as below (with debug enabled):
+
+image:media/image97.png[image]
+
+(note: the code access */dev/i2c-3* interface, if *MPL3115A2* driver
+enabled in kernel, the code will fail due to device blocking by driver)
+
+With testing part over, we can proceed to further development using
+kernel supported drivers.
+
+enable the supported drivers in kernel by setting the below values to
+"**y**" in *.config* or "**make menuconfig**":
+
+*# CONFIG_SENSORS_FXOS8700 is not set*
+
+*# CONFIG_SENSORS_FXAS2100X is not set*
+
+*# CONFIG_INPUT_MPL3115 is not set*
+
+to
+
+*CONFIG_SENSORS_FXOS8700=y*
+
+*CONFIG_SENSORS_FXAS2100X=y*
+
+*CONFIG_INPUT_MPL3115=y*
+
+applications need to be written from android/debian/yocto interfaces to
+access full functionality.
+
+[[testing-wifi]]
+Testing Wifi:
+^^^^^^^^^^^^^
+
+*======================================================*
+
+broadcom bcmdhd getting loaded and wireless interface getting up suring
+kernel boot.
+
+this comes from enabling "**Broadcom FullMAC wireless cards support** "
+in kernel source "Device Drivers >> Network Device Support > Wireless
+Lan"
+
+the firmware supporting "**BCM4339** " hardware is available in
+"**/lib/firmware/bcm**" directory.
+
+image:media/image98.png[image]
+
+automatic ip allocation using DHCP:
+
+image:media/image99.png[image]
+
+Verify ip address:
+
+image:media/image100.png[image]
+
+Ping test:
+
+image:media/image101.png[image]
+
+change setting for *essid* & *password* in "/etc/network/interfaces"
+file.
+
+===========================================
+
+auto lo
+
+iface lo inet loopback
+
+auto wlan0
+
+iface wlan0 inet dhcp
+
+wpa-ssid "SSID_NAME"
+
+wpa-psk "PASSWORD"
+
+===========================================
+
+wpa_supplicant config *"/etc/wpa_supplicant.conf"*
+
+===========================================
+
+ctrl_interface=/var/run/wpa_supplicant
+
+ctrl_interface_group=0
+
+update_config=1
+
+network=\{
+
+ssid=" SSID_NAME "
+
+scan_ssid=1
+
+key_mgmt=WPA-PSK2
+
+psk=" PASSWORD "
+
+priority=5
+
+}
+
+===========================================
+
+[[testing-lcd]]
+Testing LCD:
+^^^^^^^^^^^^
+
+After boot up , goto /root/lcd and run the following command:
+
+./framebuffer.out
+
+image:media/image102.png[image]
+
+It will starts the following sequence of displays.
+
+image:media/image103.png[image]
+
+image:media/image104.png[image]
+
+image:media/image105.png[image]
+
+image:media/image106.png[image]
+
+image:media/image107.png[image]
+
+image:media/image108.png[image]
+
+image:media/image109.png[image]
+
