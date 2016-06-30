@@ -1,0 +1,21 @@
+= README
+
+== Setup the environment
+
+Installs the needed packages on your host machine.
+
+[source, console]
+$ sudo apt-get install bundler
+$ bundle install
+
+== Build
+
+Build both `html` and `pdf` files:
+[source, console]
+$ bundle exec rake build
+
+Build only one binary:
+
+[source, console]
+$ bundle exec rake build:html
+$ bundle exec rake build:pdf
