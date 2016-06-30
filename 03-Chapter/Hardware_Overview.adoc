@@ -1,14 +1,11 @@
 [[hardware-overview]]
-Hardware Overview
------------------
+== Hardware Overview
 
 [[cpu-board]]
-CPU Board
-~~~~~~~~~
+=== CPU Board
 
 [[cpu]]
-CPU
-^^^
+==== CPU
 
 Main Processor: NXP MCIMX7S3DVK08SA - i.MX7S with 12mm x 12mm MAPBGA,
 0.4mm
@@ -17,73 +14,66 @@ The i.MX7S applications processor houses an ARM Cortex-A7 core and an
 ARM Cortex-M4. The device is targeted for IoT, Wearable and general
 embedded markets.
 
-image:media/image77.jpeg[image]
-
-Figure 5 iMX7S SoC Diagram
+[[img77]]
+.iMX7S SoC Diagram
+image::media/image77.jpeg[]
 
 [[memory-emcp-lpddr3-and-emmc]]
-Memory eMCP – LPDDR3 and eMMC
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+==== Memory eMCP – LPDDR3 and eMMC
 
 The CPU Board features a Multi-Chip Package Memory
 08EMCP04-EL3AV100-C30U from Kingston which combines 8GB eMMC and 512MB
 Low Power DDR3 synchronous dynamic RAM. This comes in 221-ball FBGA
 package.
 
-image:media/image78.png[image]
-
-Figure 6 KingSton eMCP Block Diagram
+[[img78]]
+.KingSton eMCP Block Diagram
+image::media/image78.png[]
 
 [[video-and-display]]
-Video and Display
-^^^^^^^^^^^^^^^^^
+==== Video and Display
 
 The WaRP7 CPU board provides output video from MIPI-DSI and accepts
 input through MIPI- CSI
 
 [[mipi-dsi]]
-MIPI-DSI
-++++++++
+===== MIPI-DSI
 
 The CPU board includes a MIPI-DSI connector for outputting output the
 video from the i.MX7S MIPI- DSI PHY via the MIPI-DSI interface.
 
-image:media/image79.png[image]
-
-Figure 7 MIPI-DSI connector
+[[img79]]
+.MIPI-DSI connector
+image::media/image79.png[]
 
 [[capacitive-touch-screen]]
-Capacitive Touch Screen
-+++++++++++++++++++++++
+====== Capacitive Touch Screen
 
 Capacitive touch screen is supported by I2C via touch screen port.
 
-image:media/image80.png[image]
-
-Figure 8 Touch Screen Interface
+[[img80]]
+.Touch Screen Interface
+image::media/image80.png[]
 
 [[mipi-csi]]
-MIPI-CSI
-++++++++
+===== MIPI-CSI
 
 The CPU board includes a MIPI-CSI camera connector for connecting a CSI
 camera module.
 
-image:media/image81.png[image]
-
-Figure 9 MIPI CSI connector
+[[img81]]
+.MIPI CSI connector
+image::media/image81.png[]
 
 [[connectivity]]
-Connectivity
-^^^^^^^^^^^^
+==== Connectivity
 
 The WaRP7 board will provide a number of connectivity include Wi-Fi,
 Bluetooth, Bluetooth (BLE), and USB-OTG. There will be provision for NFC
 as a passive tag primarily for Bluetooth pairing.
 
 [[wi-fibluetooth]]
-Wi-Fi/Bluetooth
-+++++++++++++++
+===== Wi-Fi/Bluetooth
 
 The Murata Type 1DX module is an ultra-small module that includes 2.4GHz
 WLAN IEEE
@@ -92,25 +82,22 @@ WLAN IEEE
 Broadcom BCM4343W, the module provide high-efficiency RF front end
 circuits.
 
-image:media/image82.jpeg[image]
+[[img82]]
+.Murata 1DX module
+image::media/image82.jpeg[]
 
- +
-Figure 10 Murata 1DX module
-
-image:media/image83.png[image]
-
-Figure 11 Design implementation of 1DX
+[[img83]]
+.Design implementation of 1DX
+image::media/image83.png[]
 
 [[usb-otg]]
-USB-OTG
-+++++++
+===== USB-OTG
 
 The CPU board provides a USB micro-AB connector to support USB-OTG
 function powered by the by USB OTG1 module on i.MX7S.
 
 [[nfc]]
-NFC
-+++
+===== NFC
 
 The board provides support for NFC using the NXP NT3H1101W0FHK. In
 addition to the passive NFC Forum compliant contactless interface, the
@@ -120,17 +107,15 @@ externally powered SRAM mapped into the memory allows a fast data
 transfer between the RF and I2C interfaces and vice versa, without the
 write cycle limitations of the EEPROM memory.
 
-image:media/image84.png[image]
-
-Figure 12 NFC circuitry
+[[img84]]
+.NFC circuitry
+image::media/image84.png[]
 
 [[power-management]]
-Power Management
-^^^^^^^^^^^^^^^^
+==== Power Management
 
 [[power-management-ic]]
-Power Management IC
-+++++++++++++++++++
+===== Power Management IC
 
 The NXP PF3000 power management integrated circuit (PMIC) features a
 configurable architecture that supports numerous outputs with various
@@ -138,17 +123,16 @@ current ratings as well as programmable voltage and sequencing. This
 enables the PF3000 to power the core processor, external memory and
 peripherals to provide a single-chip system power solution.
 
-image:media/image85.jpeg[image]
-
-Figure 13 PF3000 Functional Block diagram
+[[img85]]
+.PF3000 Functional Block diagram
+image::media/image85.jpeg[]
 
 [[power-tree-design]]
-Power Tree Design
-+++++++++++++++++
+===== Power Tree Design
 
 The usage of PF3000 output is as shown in Table 6 below.
 
-*Table 2 PF3000 Output Power Up Sequence and Usage*
+.PF3000 Output Power Up Sequence and Usage
 
 [cols=",,,,",options="header",]
 |=======================================================================
@@ -200,7 +184,7 @@ VDD_USB_OTG2_3P3_IN
 
 The following i.MX7S power rails must use the internal LDO outputs.
 
-*Table 3 iMX7S Power Rails – Internal LDO*
+.iMX7S Power Rails – Internal LDO
 
 [cols=",",options="header",]
 |=================================================
@@ -219,8 +203,7 @@ PCIE_VPH PCIE_VPH_RX PCIE_VPH_TX
 |=================================================
 
 [[battery-charger]]
-Battery Charger
-+++++++++++++++
+===== Battery Charger
 
 The NXP BC3770 is a fully programmable switching charger with dual-path
 output for single-cell Li-Ion and Li-Polymer battery. The dual-path
@@ -237,23 +220,20 @@ I2C Interface that operates up to 400 kHz
 * Supports 1.5 MHz switching capabilities
 
 [[io-board]]
-IO Board
-~~~~~~~~
+=== IO Board
 
 [[audio]]
-Audio
-^^^^^
+==== Audio
 
 The IO board includes the Freescale SGTL5000 – a ultra-low power audio
 codec with MIC In and Line Out capability.
 
-image:media/image86.png[image]
-
-Figure 14 Freescale SGTL5000 Audio Codec
+[[img86]]
+.Freescale SGTL5000 Audio Codec
+image::media/image86.png[]
 
 [[sensors]]
-Sensors
-^^^^^^^
+==== Sensors
 
 The WaRP7 board will include three sensors: altimeter, accelerometer and
 gyroscope. These three sensor chips share the I2C bus on i.MX7S. The
@@ -261,8 +241,7 @@ sensors interrupts are wired to the processor as OR circuit. The
 software will determine which device asserted the interrupt.
 
 [[altimeter]]
-Altimeter
-+++++++++
+===== Altimeter
 
 The board features NXP’s MPL3115A2 precision altimeter. The MPL3115A2 is
 a compact piezoresistive absolute pressure sensor with an I2C interface.
@@ -272,48 +251,45 @@ MEMS in conjunction with an embedded high resolution 24-bit equivalent
 ADC provide accurate pressure [Pascals]/altitude [meters] and
 temperature [degrees Celsius] data.
 
-image:media/image87.jpeg[image]
+[[img87]]
+.MPL3115A2 Block Diagram
+image::media/image87.jpeg[]
 
-Figure 15 MPL3115A2 Block Diagram
-
-image:media/image88.png[image]
-
-Figure 16 Altimeter schematics
+[[img88]]
+.Altimeter schematics
+image::media/image88.png[]
 
 [[accelerometer-and-magnetometer]]
-Accelerometer and Magnetometer
-++++++++++++++++++++++++++++++
+===== Accelerometer and Magnetometer
 
 The board also features FXOS8700CQ 6-axis sensor combines
 industry-leading 14-bit accelerometer and 16-bit magnetometer sensors in
 a small 3 x 3 x 1.2 mm QFN plastic package.
 
-image:media/image89.jpeg[image]
+[[img89]]
+.FXOS8700CQ – Accelerometer/Magnetometer Block Diagram
+image::media/image89.jpeg[]
 
-Figure 17 FXOS8700CQ – Accelerometer/Magnetometer Block Diagram
-
-image:media/image90.png[image]
-
-Figure 18 Accelerometer/Magnetometer schematics
+[[img90]]
+.Accelerometer/Magnetometer schematics
+image::media/image90.png[]
 
 [[gyroscope]]
-Gyroscope
-+++++++++
+===== Gyroscope
 
 The IO board also features the NXP’s 3-axis digital gyroscope -
 FXAS21002.
 
-image:media/image91.jpeg[image]
+[[img91]]
+.FXAS21002 Gyroscope Block Diagram
+image::media/image91.jpeg[]
 
-Figure 19 FXAS21002 Gyroscope Block Diagram
-
-image:media/image92.png[image]
-
-Figure 20 Gyroscope schematics
+[[img92]]
+.Gyroscope schematics
+image::media/image92.png[]
 
 [[peripheral-expansion-port]]
-Peripheral Expansion Port
-^^^^^^^^^^^^^^^^^^^^^^^^^
+==== Peripheral Expansion Port
 
 The board provides expansion headers compatible with the *mikroBUS^TM^*
 socket connection standard for accessing the following communication
@@ -324,330 +300,3 @@ modules on i.MX7S:
 * PWM
 * UART
 * GPIO
-[[hardware-overview]]
-Hardware Overview
------------------
-
-[[cpu-board]]
-CPU Board
-~~~~~~~~~
-
-[[cpu]]
-CPU
-^^^
-
-Main Processor: NXP MCIMX7S3DVK08SA - i.MX7S with 12mm x 12mm MAPBGA,
-0.4mm
-
-The i.MX7S applications processor houses an ARM Cortex-A7 core and an
-ARM Cortex-M4. The device is targeted for IoT, Wearable and general
-embedded markets.
-
-image:media/image77.jpeg[image]
-
-Figure 5 iMX7S SoC Diagram
-
-[[memory-emcp-lpddr3-and-emmc]]
-Memory eMCP – LPDDR3 and eMMC
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-The CPU Board features a Multi-Chip Package Memory
-08EMCP04-EL3AV100-C30U from Kingston which combines 8GB eMMC and 512MB
-Low Power DDR3 synchronous dynamic RAM. This comes in 221-ball FBGA
-package.
-
-image:media/image78.png[image]
-
-Figure 6 KingSton eMCP Block Diagram
-
-[[video-and-display]]
-Video and Display
-^^^^^^^^^^^^^^^^^
-
-The WaRP7 CPU board provides output video from MIPI-DSI and accepts
-input through MIPI- CSI
-
-[[mipi-dsi]]
-MIPI-DSI
-++++++++
-
-The CPU board includes a MIPI-DSI connector for outputting output the
-video from the i.MX7S MIPI- DSI PHY via the MIPI-DSI interface.
-
-image:media/image79.png[image]
-
-Figure 7 MIPI-DSI connector
-
-[[capacitive-touch-screen]]
-Capacitive Touch Screen
-+++++++++++++++++++++++
-
-Capacitive touch screen is supported by I2C via touch screen port.
-
-image:media/image80.png[image]
-
-Figure 8 Touch Screen Interface
-
-[[mipi-csi]]
-MIPI-CSI
-++++++++
-
-The CPU board includes a MIPI-CSI camera connector for connecting a CSI
-camera module.
-
-image:media/image81.png[image]
-
-Figure 9 MIPI CSI connector
-
-[[connectivity]]
-Connectivity
-^^^^^^^^^^^^
-
-The WaRP7 board will provide a number of connectivity include Wi-Fi,
-Bluetooth, Bluetooth (BLE), and USB-OTG. There will be provision for NFC
-as a passive tag primarily for Bluetooth pairing.
-
-[[wi-fibluetooth]]
-Wi-Fi/Bluetooth
-+++++++++++++++
-
-The Murata Type 1DX module is an ultra-small module that includes 2.4GHz
-WLAN IEEE
-
-802.11b/g/n and Bluetooth Version 4.1 plus EDR functionality. Based on
-Broadcom BCM4343W, the module provide high-efficiency RF front end
-circuits.
-
-image:media/image82.jpeg[image]
-
- +
-Figure 10 Murata 1DX module
-
-image:media/image83.png[image]
-
-Figure 11 Design implementation of 1DX
-
-[[usb-otg]]
-USB-OTG
-+++++++
-
-The CPU board provides a USB micro-AB connector to support USB-OTG
-function powered by the by USB OTG1 module on i.MX7S.
-
-[[nfc]]
-NFC
-+++
-
-The board provides support for NFC using the NXP NT3H1101W0FHK. In
-addition to the passive NFC Forum compliant contactless interface, the
-IC features an I2C contact interface, which can communicate with i.mx7
-if NTAG I2C is powered from an external power supply. An additional
-externally powered SRAM mapped into the memory allows a fast data
-transfer between the RF and I2C interfaces and vice versa, without the
-write cycle limitations of the EEPROM memory.
-
-image:media/image84.png[image]
-
-Figure 12 NFC circuitry
-
-[[power-management]]
-Power Management
-^^^^^^^^^^^^^^^^
-
-[[power-management-ic]]
-Power Management IC
-+++++++++++++++++++
-
-The NXP PF3000 power management integrated circuit (PMIC) features a
-configurable architecture that supports numerous outputs with various
-current ratings as well as programmable voltage and sequencing. This
-enables the PF3000 to power the core processor, external memory and
-peripherals to provide a single-chip system power solution.
-
-image:media/image85.jpeg[image]
-
-Figure 13 PF3000 Functional Block diagram
-
-[[power-tree-design]]
-Power Tree Design
-+++++++++++++++++
-
-The usage of PF3000 output is as shown in Table 6 below.
-
-*Table 2 PF3000 Output Power Up Sequence and Usage*
-
-[cols=",,,,",options="header",]
-|=======================================================================
-a|
-*PF0300*
-
-*Channel*
-
- |*Voltage* |*Power up sequence* a|
-*Output*
-
-*Current*
-
- |*i.MX7 Power Rail*
-|SW1A |1.15 V |1 |1000 mA |VDD_ARM
-
-|SW1B |1.15 V |1 |1750 mA |VDD_SOC
-
-|SW2 |1.8 V |2 |1250 mA a|
-VDDA_1P8_IN FUSE_FSOURCE VDD_XTAL_1P8
-
-VDD_ADC1_1P8
-
-VDD_ADC2_1P8
-
-VDD_TEMPSENOR_1P8
-
-|SW3 |1.5 V |3 |1500 mA |NVCC_DRAM NVCC_DRAM_CKE
-
-|VSNVS |3.0 V |0 |1 mA |VDD_SNVS_IN
-
-|SWBST | |- |600 mA |
-
-|VREFDDR | |3 |10 mA |DRAM_VREF
-
-|VLDO1 |1.8 V |2 |100 mA |VDD_LPSR_IN
-
-|VLDO2 |1.2 V |- |250 mA |
-
-|VLDO3 |1.8 V |2 |100 mA |NVCC_GPIO1/2
-
-|VLDO4 |1.8 V |- |350 mA |
-
-|V33 |3.15 V |2 |350 mA |NVCC_xxx VDD_USB_OTG1_3P3_IN
-VDD_USB_OTG2_3P3_IN
-
-|VCC_SD |3.15 V |3 |100 mA |NVCC_SD2
-|=======================================================================
-
-The following i.MX7S power rails must use the internal LDO outputs.
-
-*Table 3 iMX7S Power Rails – Internal LDO*
-
-[cols=",",options="header",]
-|=================================================
-|*i.MX7S internal LDO output* |*i.MX7S Power Rail*
-|VDDD_1P0_CAP a|
-VDD_MIPI_1P0
-
-PCIE_VP PCIE_VP_RX PCIE_VP_TX
-
-|VDDA_PHY_1P8 a|
-VDDA_MIPI_1P8
-
-PCIE_VPH PCIE_VPH_RX PCIE_VPH_TX
-
-|VDD_1P2_CAP |USB_VDD_H_1P2
-|=================================================
-
-[[battery-charger]]
-Battery Charger
-+++++++++++++++
-
-The NXP BC3770 is a fully programmable switching charger with dual-path
-output for single-cell Li-Ion and Li-Polymer battery. The dual-path
-output allows mobile applications with a fully discharged battery to
-boot up the system.
-
-* High efficiency and switch-mode operation reduces heat dissipation and
-allows for higher current capability for a given package size
-* Single input with a 20V withstanding input and charges the battery
-with an input current up to 2A
-* Charging parameters and operating modes are fully programmable over an
-I2C Interface that operates up to 400 kHz
-* Highly integrated featuring OVP and Power FETs
-* Supports 1.5 MHz switching capabilities
-
-[[io-board]]
-IO Board
-~~~~~~~~
-
-[[audio]]
-Audio
-^^^^^
-
-The IO board includes the Freescale SGTL5000 – a ultra-low power audio
-codec with MIC In and Line Out capability.
-
-image:media/image86.png[image]
-
-Figure 14 Freescale SGTL5000 Audio Codec
-
-[[sensors]]
-Sensors
-^^^^^^^
-
-The WaRP7 board will include three sensors: altimeter, accelerometer and
-gyroscope. These three sensor chips share the I2C bus on i.MX7S. The
-sensors interrupts are wired to the processor as OR circuit. The
-software will determine which device asserted the interrupt.
-
-[[altimeter]]
-Altimeter
-+++++++++
-
-The board features NXP’s MPL3115A2 precision altimeter. The MPL3115A2 is
-a compact piezoresistive absolute pressure sensor with an I2C interface.
-MPL3115 has a wide operating range of 20kPa to 110 kPa, a range that
-covers all surface elevations on Earth. The fully internally compensated
-MEMS in conjunction with an embedded high resolution 24-bit equivalent
-ADC provide accurate pressure [Pascals]/altitude [meters] and
-temperature [degrees Celsius] data.
-
-image:media/image87.jpeg[image]
-
-Figure 15 MPL3115A2 Block Diagram
-
-image:media/image88.png[image]
-
-Figure 16 Altimeter schematics
-
-[[accelerometer-and-magnetometer]]
-Accelerometer and Magnetometer
-++++++++++++++++++++++++++++++
-
-The board also features FXOS8700CQ 6-axis sensor combines
-industry-leading 14-bit accelerometer and 16-bit magnetometer sensors in
-a small 3 x 3 x 1.2 mm QFN plastic package.
-
-image:media/image89.jpeg[image]
-
-Figure 17 FXOS8700CQ – Accelerometer/Magnetometer Block Diagram
-
-image:media/image90.png[image]
-
-Figure 18 Accelerometer/Magnetometer schematics
-
-[[gyroscope]]
-Gyroscope
-+++++++++
-
-The IO board also features the NXP’s 3-axis digital gyroscope -
-FXAS21002.
-
-image:media/image91.jpeg[image]
-
-Figure 19 FXAS21002 Gyroscope Block Diagram
-
-image:media/image92.png[image]
-
-Figure 20 Gyroscope schematics
-
-[[peripheral-expansion-port]]
-Peripheral Expansion Port
-^^^^^^^^^^^^^^^^^^^^^^^^^
-
-The board provides expansion headers compatible with the *mikroBUS^TM^*
-socket connection standard for accessing the following communication
-modules on i.MX7S:
-
-* I2C
-* SPI
-* PWM
-* UART
-* GPIO
-
