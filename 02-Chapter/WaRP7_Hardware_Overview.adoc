@@ -1,10 +1,8 @@
 [[warp7-hardware-overview]]
-WaRP7 Hardware Overview
------------------------
+== WaRP7 Hardware Overview
 
 The WaRP7 is the next generation Wearable’s Reference Platform based on
 the NXP iMX7 Solo applications processor.
-
 The kit consists of 2 boards
 
 * A *CPU board* featuring the ARM Cortex-A7 based iMX7 processor,
@@ -13,68 +11,59 @@ memory, power management and a combo WiFi/BLE module.
 expansion and debugging capabilities.
 
 [[featuresspecifications]]
-Features/Specifications
-~~~~~~~~~~~~~~~~~~~~~~~
+=== Features/Specifications
 
-[cols="",options="header",]
+[cols="2",options="header",]
 |================================================================
-|*Features*
-|*CPU Board*
-|*Processor* a|
-NXP iMX7S
-
-ARM Cortex-A7/Cortex-M4
-
-|*Memory* |8GB, 8bit Embedded MMC/ 512MB LPDDR3
+| Features | CPU Board
+|*Processor* | NXP iMX7S ARM Cortex-A7/Cortex-M4
+|*Memory* | 8GB, 8bit Embedded MMC/ 512MB LPDDR3
 |*PMIC* |PF3000 PMIC and BC3770 battery charger.
 |*Wireless* |Combo WiFI/BLE
-|*Display/Camera interface* a|
-MIPI-DSI connector
-
-MIPI-CSI connector
-
+|*Display/Camera interface* | MIPI-DSI connector / MIPI-CSI connector
 |*Power Source* |USB/Battery
-|*PCB* |38mm x 23mm |10 layers
-|*Indicators* |1-Power, 1 – User
-|*IO Board*
-|*Debug Support* |JTAG, Serial Header
-|*Sensors* |Accelerometer, Magnetometer Pressure Sensor Gyroscope
-|*Audio* |Stereo codec – Mic In / Line Out
-|*Expansion* |MikroE Click header
+|*PCB* | 38mm x 23mm / 10 layers
+|*Indicators* | 1-Power, 1 – User
+|*Features* | *IO Board*
+|*Debug Support* | JTAG, Serial Header
+|*Sensors* | Accelerometer, Magnetometer Pressure Sensor Gyroscope
+|*Audio* | Stereo codec – Mic In / Line Out
+|*Expansion* | MikroE Click header
 |================================================================
 
-image:media/image73.png[image]
+[[image73]]
+.CPU Board
+image::media/image73.png[image]
 
-Figure 3 CPU Board
-
-image:media/image74.png[image]
-
-Figure 4 IO Board
+[[image74]]
+.IO Board
+image::media/image74.png[image]
 
 [[board-dimension-and-operating-environment]]
-Board Dimension and Operating Environment
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Board Dimension and Operating Environment
 
-**Table 1 WaRP7 CPU Board Dimensions**
+.WaRP7 CPU Board Dimensions
 
-[cols=",",options="header",]
 |=====================
 |Length |38 mm
 |Width |23 mm
 |PCB Thickness |1.0 mm
 |=====================
 
-image:media/image75.png[image]
+[[img]]
+.Board Dimensions
+image::media/image75.png[image]
 
 The board operates in the commercial temperature range, 0°C ~ 85°C
 
-*Table 2 WaRP7 IO Board Dimensions*
+.WaRP7 IO Board Dimensions*
 
-[cols=",",options="header",]
 |=====================
 |Length |38 mm
 |Width |38 mm
 |PCB Thickness |1.0 mm
 |=====================
 
-image:media/image76.png[image]
+[[img]]
+.Image 76 - Board Dimensions
+image::media/image76.png[image]
