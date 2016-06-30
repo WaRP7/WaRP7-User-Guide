@@ -1,10 +1,8 @@
 [[introduction]]
-Introduction
-------------
+== Introduction
 
 [[platform-purpose]]
-Platform Purpose
-~~~~~~~~~~~~~~~~
+=== Platform Purpose
 
 The WaRP7 is the next generation Internet of Things (IoT) and Wearable’s
 Reference Platform. WaRP7 is a powerful, low-cost platform designed for
@@ -25,64 +23,60 @@ IO Board hardware and focuses primarily on its initial setup and basic
 usage.
 
 [[kit-contents]]
-Kit Contents
-~~~~~~~~~~~~
+=== Kit Contents
 
 In the box you will find the following items as shown in **Figure 1**.
 
-• WaRP7 CPU Board
+* WaRP7 CPU Board
+* WaRP7 IO Board
+* Lithium Polymer Battery
+* Quick Start Guide.
 
-• WaRP7 IO Board
-
-• Lithium Polymer Battery
-
-• Quick Start Guide.
-
-image:media/image1.png[image]The display for the kit can be purchased
-separately (__details coming soon__). Check for availability at
-http://www.element14.com/warp7[www.element14.com/warp7]
-
-image:media/image2.png[image]
-
-image:media/image59.png[image]
-
-image:media/image60.png[image]
-
-image:media/image61.png[image]
-
-image:media/image62.png[image]
-
-image:media/image63.png[image]
-
-image:media/image64.png[image]
+[[img]]
+.The display for the kit can be purchased separately (__details coming soon__). Check for availability at http://www.element14.com/warp7[www.element14.com/warp7]
+image::media/image2.png[image]
 
 [[getting-started-with-hardware]]
-Getting Started with Hardware +
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+=== Getting Started with Hardware
 
 * STEP 1: Connect NFC cables to IO board
 +
-image:media/image65.png[image]
-* STEP 2: Connect CPU board
+[[image65]]
+.Step 1
+image::media/image65.png[image]
 
-image:media/image66.png[image]
+* STEP 2: Connect CPU board
++
+[[image66]]
+.Step 2
+image::media/image66.png[image]
 
 * STEP 3: Connect battery
 +
-image:media/image67.png[image]
+[[image67]]
+.Step 3.1
+image::media/image67.png[image]
 +
-image:media/image68.png[image]
+[[image68]]
+.Step 3.2
+image::media/image68.png[image]
+
 * STEP 4: Connect LCD
 +
-image:media/image69.png[image]
+[[image69]]
+.Step 4.1
+image::media/image69.png[image]
 +
-image:media/image70.png[image]
+[[image70]]
+.Step 4.2
+image::media/image70.png[image]
 +
-image:media/image71.png[image]
+[[image71]]
+.Step 4.3
+image::media/image71.png[image]
 
 Connect USB
 
-image:media/image72.png[image]
-
-Figure 2 WaRP7 connected
-
+[[image72]]
+.WaRP7 connected
+image::media/image72.png[image]
