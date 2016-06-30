@@ -130,7 +130,7 @@ image::media/image85.jpeg[]
 [[power-tree-design]]
 ===== Power Tree Design
 
-The usage of PF3000 output is as shown in Table 6 below.
+The usage of PF3000 output is as shown in <<PF3000 Output Power Up Sequence and Usage>> below.
 
 .PF3000 Output Power Up Sequence and Usage
 
