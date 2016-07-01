@@ -146,7 +146,7 @@ compile & run the "bc3770.c" from the utils folder.
 
 [[img93]]
 .Testing Battery Charger
-image::media/image93.png[]
+image::media/image93.png[align=center]
 
 [[testing-sensors]]
 ==== Testing Sensors:
@@ -163,7 +163,7 @@ run "i2cdetect" command to scan i2c bus for devices.
 
 [[img94]]
 .Testing Sensors
-image::media/image94.jpeg[]
+image::media/image94.jpeg[align=center]
 
 To detect sensor identity status we will check for "**WHOAMI**" register
 values:
@@ -196,7 +196,7 @@ FXAS21002CQR1 datasheet confirms the "WHOAMI" value.
 
 [[img95]]
 .Sensors Hardware Detection
-image::media/image95.png[]
+image::media/image95.png[align=center]
 
 With above detection we can confirm the sensor hardware is working.
 
@@ -205,7 +205,7 @@ sample codes "detect_acclerometer.c","detect_gyrometer.c" and
 
 [[img96]]
 .Sensors Detection
-image::media/image96.png[]
+image::media/image96.png[align=center]
 
 we developed a simple bare-metal application in Linux to access mpl3115
 sensor.
@@ -219,7 +219,7 @@ you will get result as below (with debug enabled):
 
 [[img97]]
 .Temperature Test
-image::media/image97.png[]
+image::media/image97.png[align=center]
 
 (note: the code access */dev/i2c-3* interface, if *MPL3115A2* driver
 enabled in kernel, the code will fail due to device blocking by driver)
@@ -258,25 +258,25 @@ the firmware supporting "**BCM4339** " hardware is available in
 
 [[img98]]
 .Testing Wifi
-image::media/image98.png[]
+image::media/image98.png[align=center]
 
 automatic ip allocation using DHCP:
 
 [[img99]]
 .Automatic IP Allocation
-image::media/image99.png[]
+image::media/image99.png[align=center]
 
 Verify ip address:
 
 [[img100]]
 .Verify IP Address
-image::media/image100.png[]
+image::media/image100.png[align=center]
 
 Ping test:
 
 [[img101]]
 .Ping Test
-image::media/image101.png[]
+image::media/image101.png[align=center]
 
 change setting for *essid* & *password* in "/etc/network/interfaces"
 file.
@@ -313,34 +313,34 @@ After boot up , goto /root/lcd and run the following command:
 
 [[img102]]
 .Framebuffer mapped to memory
-image::media/image102.png[]
+image::media/image102.png[align=center]
 
 It will starts the following sequence of displays.
 
 [[img103]]
 .Display 1
-image::media/image103.png[]
+image::media/image103.png[align=center]
 
 [[img104]]
 .Display 2
-image::media/image104.png[]
+image::media/image104.png[align=center]
 
 [[img105]]
 .Display 3
-image::media/image105.png[]
+image::media/image105.png[align=center]
 
 [[img106]]
 .Display 4
-image::media/image106.png[]
+image::media/image106.png[align=center]
 
 [[img107]]
 .Display 5
-image::media/image107.png[]
+image::media/image107.png[align=center]
 
 [[img108]]
 .Display 6
-image::media/image108.png[]
+image::media/image108.png[align=center]
 
 [[img109]]
 .Display 7
-image::media/image109.png[]
+image::media/image109.png[align=center]
