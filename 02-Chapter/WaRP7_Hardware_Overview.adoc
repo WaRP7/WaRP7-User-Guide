@@ -33,11 +33,11 @@ expansion and debugging capabilities.
 
 [[image73]]
 .CPU Board
-image::media/image73.png[image]
+image::media/image73.png[align=center]
 
 [[image74]]
 .IO Board
-image::media/image74.png[image]
+image::media/image74.png[align=center]
 
 [[board-dimension-and-operating-environment]]
 === Board Dimension and Operating Environment
@@ -52,7 +52,7 @@ image::media/image74.png[image]
 
 [[img]]
 .Board Dimensions
-image::media/image75.png[image]
+image::media/image75.png[align=center]
 
 The board operates in the commercial temperature range, 0°C ~ 85°C
 
@@ -66,4 +66,4 @@ The board operates in the commercial temperature range, 0°C ~ 85°C
 
 [[img]]
 .Image 76 - Board Dimensions
-image::media/image76.png[image]
+image::media/image76.png[align=center]
