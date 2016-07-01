@@ -15,7 +15,7 @@ command shown with prefix *~#* are to be run on board after linux up.
 
 *Steps:*
 
-1. Extract the kernel and use the below commands to compile
+. Extract the kernel and use the below commands to compile
 
   $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- distclean
   $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- warp7_defconfig
@@ -23,64 +23,63 @@ command shown with prefix *~#* are to be run on board after linux up.
   $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- modules
   $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- imx7d-warp7-mipi-dsi.dtb
 
-2. Extract and compile imx_usb_loader-master
+. Extract and compile imx_usb_loader-master
 
-3. usb imx_usb, to load uboot first time in the board.
+. usb imx_usb, to load uboot first time in the board.
 
   $ cd imx_usb_loader-master
   $ make
   $ ./imx_usb u-boot.imx
 
-4. u-boot prompt will come. ( we are using minicom )
+. u-boot prompt will come. ( we are using minicom )
 
-5. Run on uboot
+. Run on uboot
 
   => ums 0 mmc 0
 
-6. Now you will able to see emmc of as storage device on your computer.
+. Now you will able to see emmc of as storage device on your computer.
 
-7. Use any standard utility to make partition table.
+. Use any standard utility to make partition table.
 
-8. create 3 partitions (10MB(Fat32), 100MB(Fat32) and remaining space
+. create 3 partitions (10MB(Fat32), 100MB(Fat32) and remaining space
 as ext4)
 
-9. copy zImage to to the 100MB fat32 partition.
+. copy zImage to to the 100MB fat32 partition.
 
-10. rename and copy *imx7d-warp7-mipi-dsi.dtb* as *warp7.dtb* to the
+. rename and copy *imx7d-warp7-mipi-dsi.dtb* as *warp7.dtb* to the
 100MB fat32 partition.
 
-11. copy the *rootfs_debian.tar.bz2* to the 3rd ext4 partition.
+. copy the *rootfs_debian.tar.bz2* to the 3rd ext4 partition.
 
-12. now install kernel modules to the rootfs as shown below.
+. now install kernel modules to the rootfs as shown below.
 
   $ sudo make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- modules_install
 INSTALL_MOD_PATH=/path_to_your_emmc_ext4_partition_mount
 
-13. now unmount the partitions using "*sudo umount /dev/sdX*"
+. now unmount the partitions using "*sudo umount /dev/sdX*"
 command.
 
-14. in u-boot prompt, hit **Ctrl+c**, to cancel the mounted mmc.
+. in u-boot prompt, hit **Ctrl+c**, to cancel the mounted mmc.
 
-15. in u-boot prompt, use *loadx* command to load *uboot* to ram.
-
+. in u-boot prompt, use *loadx* command to load *uboot* to ram.
++
 after loadx completed , press **ctrl+a**, then s to select xmodem for
 uboot transfer.
-
++
   => loadx
-
++
 save the uboot in emmc.
-
++
   => mmc write 0x80800000 2 0x2a6
-
++
 *<CAUTION>*
-
-[start=16]
-16. now fuse the OTP. This command is one time only, be careful else it
++
+. now fuse the OTP. This command is one time only, be careful else it
 will brick the board .
 
   => fuse prog 1 3 10002820
 
-17. set bootcmd environment params as below .
+. set bootcmd environment params as below .
 
   => setenv bootcmd 'setenv mmcroot /dev/mmcblk2p3 rootwait rw;setenv
 bootargs console=$\{console},$\{baudrate} root=$\{mmcroot};mw 30330218
@@ -88,11 +87,10 @@ bootargs console=$\{console},$\{baudrate} root=$\{mmcroot};mw 30330218
 warp7.dtb;bootz 0x80800000 - 0x83000000'
   => saveenv
   => run bootcmd
-
++
 Now linux must be up and running.
-
-[start=18]
-18. using NET OVER USB, we build USB ethernet build as **module**.
++
+. using NET OVER USB, we build USB ethernet build as **module**.
 
 use below commands on the board to load the modules.
 
