@@ -34,7 +34,7 @@ In the box you will find the following items as shown in **Figure 1**.
 
 [[img]]
 .The display for the kit can be purchased separately (__details coming soon__). Check for availability at http://www.element14.com/warp7[www.element14.com/warp7]
-image::media/image2.png[image]
+image::media/image2.png[align=center]
 
 [[getting-started-with-hardware]]
 === Getting Started with Hardware
@@ -43,40 +43,40 @@ image::media/image2.png[image]
 +
 [[image65]]
 .Step 1
-image::media/image65.png[image]
+image::media/image65.png[align=center]
 
 * STEP 2: Connect CPU board
 +
 [[image66]]
 .Step 2
-image::media/image66.png[image]
+image::media/image66.png[align=center]
 
 * STEP 3: Connect battery
 +
 [[image67]]
 .Step 3.1
-image::media/image67.png[image]
+image::media/image67.png[align=center]
 +
 [[image68]]
 .Step 3.2
-image::media/image68.png[image]
+image::media/image68.png[align=center]
 
 * STEP 4: Connect LCD
 +
 [[image69]]
 .Step 4.1
-image::media/image69.png[image]
+image::media/image69.png[align=center]
 +
 [[image70]]
 .Step 4.2
-image::media/image70.png[image]
+image::media/image70.png[align=center]
 +
 [[image71]]
 .Step 4.3
-image::media/image71.png[image]
+image::media/image71.png[align=center]
 
 Connect USB
 
 [[image72]]
 .WaRP7 connected
-image::media/image72.png[image]
+image::media/image72.png[align=center]
