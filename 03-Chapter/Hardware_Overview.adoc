@@ -8,7 +8,7 @@
 ==== CPU
 
 Main Processor: NXP MCIMX7S3DVK08SA - i.MX7S with 12mm x 12mm MAPBGA,
-0.4mm
+0.4mm.
 
 The i.MX7S applications processor houses an ARM Cortex-A7 core and an
 ARM Cortex-M4. The device is targeted for IoT, Wearable and general
@@ -27,20 +27,20 @@ Low Power DDR3 synchronous dynamic RAM. This comes in 221-ball FBGA
 package.
 
 [[img78]]
-.KingSton eMCP Block Diagram
+.Kingston eMCP Block Diagram
 image::media/image78.png[align=center]
 
 [[video-and-display]]
 ==== Video and Display
 
 The WaRP7 CPU board provides output video from MIPI-DSI and accepts
-input through MIPI- CSI
+input through MIPI- CSI.
 
 [[mipi-dsi]]
 ===== MIPI-DSI
 
-The CPU board includes a MIPI-DSI connector for outputting output the
-video from the i.MX7S MIPI- DSI PHY via the MIPI-DSI interface.
+The CPU board includes a MIPI-DSI connector for outputting the
+video from the i.MX7S MIPI-DSI PHY via the MIPI-DSI interface.
 
 [[img79]]
 .MIPI-DSI connector
@@ -68,7 +68,7 @@ image::media/image81.png[align=center]
 [[connectivity]]
 ==== Connectivity
 
-The WaRP7 board will provide a number of connectivity include Wi-Fi,
+The WaRP7 board will provide a number of connectivity including Wi-Fi,
 Bluetooth, Bluetooth (BLE), and USB-OTG. There will be provision for NFC
 as a passive tag primarily for Bluetooth pairing.
 
@@ -76,10 +76,8 @@ as a passive tag primarily for Bluetooth pairing.
 ===== Wi-Fi/Bluetooth
 
 The Murata Type 1DX module is an ultra-small module that includes 2.4GHz
-WLAN IEEE
-
-802.11b/g/n and Bluetooth Version 4.1 plus EDR functionality. Based on
-Broadcom BCM4343W, the module provide high-efficiency RF front end
+WLAN IEEE 802.11b/g/n and Bluetooth Version 4.1 plus EDR functionality. Based on
+Broadcom BCM4343W, the module provides high-efficiency RF front end
 circuits.
 
 [[img82]]
@@ -93,7 +91,7 @@ image::media/image83.png[align=center]
 [[usb-otg]]
 ===== USB-OTG
 
-The CPU board provides a USB micro-AB connector to support USB-OTG
+The CPU board provides an USB micro-AB connector to support USB-OTG
 function powered by the by USB OTG1 module on i.MX7S.
 
 [[nfc]]
@@ -101,7 +99,7 @@ function powered by the by USB OTG1 module on i.MX7S.
 
 The board provides support for NFC using the NXP NT3H1101W0FHK. In
 addition to the passive NFC Forum compliant contactless interface, the
-IC features an I2C contact interface, which can communicate with i.mx7
+IC features an I2C contact interface, which can communicate with i.MX7
 if NTAG I2C is powered from an external power supply. An additional
 externally powered SRAM mapped into the memory allows a fast data
 transfer between the RF and I2C interfaces and vice versa, without the
@@ -137,7 +135,7 @@ The usage of PF3000 output is as shown in <<PF3000 Output Power Up Sequence and 
 [cols=",,,,",options="header",]
 |=======================================================================
 a|
-*PF0300*
+*PF3000*
 
 *Channel*
 
@@ -211,13 +209,13 @@ output allows mobile applications with a fully discharged battery to
 boot up the system.
 
 * High efficiency and switch-mode operation reduces heat dissipation and
-allows for higher current capability for a given package size
+allows higher current capability for a given package size.
 * Single input with a 20V withstanding input and charges the battery
-with an input current up to 2A
+with an input current up to 2A.
 * Charging parameters and operating modes are fully programmable over an
-I2C Interface that operates up to 400 kHz
-* Highly integrated featuring OVP and Power FETs
-* Supports 1.5 MHz switching capabilities
+I2C Interface that operates up to 400 kHz.
+* Highly integrated featuring OVP and Power FETs.
+* Supports 1.5 MHz switching capabilities.
 
 [[io-board]]
 === IO Board
@@ -225,7 +223,7 @@ I2C Interface that operates up to 400 kHz
 [[audio]]
 ==== Audio
 
-The IO board includes the Freescale SGTL5000 – a ultra-low power audio
+The IO board includes the Freescale SGTL5000 – an ultra-low power audio
 codec with MIC In and Line Out capability.
 
 [[img86]]
@@ -248,7 +246,7 @@ a compact piezoresistive absolute pressure sensor with an I2C interface.
 MPL3115 has a wide operating range of 20kPa to 110 kPa, a range that
 covers all surface elevations on Earth. The fully internally compensated
 MEMS in conjunction with an embedded high resolution 24-bit equivalent
-ADC provide accurate pressure [Pascals]/altitude [meters] and
+ADC provide accurate pressure [Pascals] / altitude [meters] and
 temperature [degrees Celsius] data.
 
 [[img87]]
