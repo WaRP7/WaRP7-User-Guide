@@ -7,7 +7,7 @@
 The WaRP7 is the next generation Internet of Things (IoT) and Wearable’s
 Reference Platform. WaRP7 is a powerful, low-cost platform designed for
 rapid prototyping and reduces time to market. WaRP7 is optimized, comes
-is a tiny form factor and yet flexible enough to offer all the
+in a tiny form factor and yet flexible enough to offer all the
 advantages of traditional development tools. It has been architected and
 designed from the ground up to address key challenges in the IoT and
 wearables markets, such as battery life, connectivity, user experience
@@ -30,9 +30,9 @@ In the box you will find the following items as shown in **Figure 1**.
 * WaRP7 CPU Board
 * WaRP7 IO Board
 * Lithium Polymer Battery
-* Quick Start Guide.
+* Quick Start Guide
 
-[[img]]
+[[img2]]
 .The display for the kit can be purchased separately (__details coming soon__). Check for availability at http://www.element14.com/warp7[www.element14.com/warp7]
 image::media/image2.png[align=center]
 
@@ -75,7 +75,7 @@ image::media/image70.png[align=center]
 .Step 4.3
 image::media/image71.png[align=center]
 
-Connect USB
+* STEP 5: Connect USB
 
 [[image72]]
 .WaRP7 connected
