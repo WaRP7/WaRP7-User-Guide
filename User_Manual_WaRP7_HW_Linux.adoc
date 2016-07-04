@@ -11,3 +11,5 @@ include::02-Chapter/WaRP7_Hardware_Overview.adoc[]
 include::03-Chapter/Hardware_Overview.adoc[]
 
 include::04-Chapter/Linux_Software.adoc[]
+
+include::LICENSE.adoc[]
