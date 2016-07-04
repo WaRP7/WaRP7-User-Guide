@@ -14,9 +14,9 @@ The i.MX7S applications processor houses an ARM Cortex-A7 core and an
 ARM Cortex-M4. The device is targeted for IoT, Wearable and general
 embedded markets.
 
-[[img77]]
+[[soc_diagram]]
 .iMX7S SoC Diagram
-image::media/image77.jpeg[align=center]
+image::media/soc_diagram.jpeg[align=center]
 
 [[memory-emcp-lpddr3-and-emmc]]
 ==== Memory eMCP – LPDDR3 and eMMC
@@ -26,9 +26,9 @@ The CPU Board features a Multi-Chip Package Memory
 Low Power DDR3 synchronous dynamic RAM. This comes in 221-ball FBGA
 package.
 
-[[img78]]
+[[emcp_diagram]]
 .Kingston eMCP Block Diagram
-image::media/image78.png[align=center]
+image::media/emcp_diagram.png[align=center]
 
 [[video-and-display]]
 ==== Video and Display
@@ -42,18 +42,18 @@ input through MIPI- CSI.
 The CPU board includes a MIPI-DSI connector for outputting the
 video from the i.MX7S MIPI-DSI PHY via the MIPI-DSI interface.
 
-[[img79]]
+[[mipi-dsi_connector]]
 .MIPI-DSI connector
-image::media/image79.png[align=center]
+image::media/mipi-dsi_connector.png[align=center]
 
 [[capacitive-touch-screen]]
 ====== Capacitive Touch Screen
 
 Capacitive touch screen is supported by I2C via touch screen port.
 
-[[img80]]
+[[touch_screen_interface]]
 .Touch Screen Interface
-image::media/image80.png[align=center]
+image::media/touch_screen_interface.png[align=center]
 
 [[mipi-csi]]
 ===== MIPI-CSI
@@ -61,9 +61,9 @@ image::media/image80.png[align=center]
 The CPU board includes a MIPI-CSI camera connector for connecting a CSI
 camera module.
 
-[[img81]]
+[[mipi_csi_connector]]
 .MIPI CSI connector
-image::media/image81.png[align=center]
+image::media/mipi_csi_connector.png[align=center]
 
 [[connectivity]]
 ==== Connectivity
@@ -80,13 +80,13 @@ WLAN IEEE 802.11b/g/n and Bluetooth Version 4.1 plus EDR functionality. Based on
 Broadcom BCM4343W, the module provides high-efficiency RF front end
 circuits.
 
-[[img82]]
+[[bcm4343w_module]]
 .Murata 1DX module
-image::media/image82.jpeg[align=center]
+image::media/bcm4343w_module.jpeg[align=center]
 
-[[img83]]
+[[design_1dx]]
 .Design implementation of 1DX
-image::media/image83.png[align=center]
+image::media/design_1dx.png[align=center]
 
 [[usb-otg]]
 ===== USB-OTG
@@ -105,9 +105,9 @@ externally powered SRAM mapped into the memory allows a fast data
 transfer between the RF and I2C interfaces and vice versa, without the
 write cycle limitations of the EEPROM memory.
 
-[[img84]]
+[[nfc_schematic]]
 .NFC circuitry
-image::media/image84.png[align=center]
+image::media/nfc_schematic.png[align=center]
 
 [[power-management]]
 ==== Power Management
@@ -121,9 +121,9 @@ current ratings as well as programmable voltage and sequencing. This
 enables the PF3000 to power the core processor, external memory and
 peripherals to provide a single-chip system power solution.
 
-[[img85]]
+[[pf3000_diagram]]
 .PF3000 Functional Block diagram
-image::media/image85.jpeg[align=center]
+image::media/pf3000_diagram.jpeg[align=center]
 
 [[power-tree-design]]
 ===== Power Tree Design
@@ -226,9 +226,9 @@ I2C Interface that operates up to 400 kHz.
 The IO board includes the Freescale SGTL5000 – an ultra-low power audio
 codec with MIC In and Line Out capability.
 
-[[img86]]
+[[audio_codec]]
 .Freescale SGTL5000 Audio Codec
-image::media/image86.png[align=center]
+image::media/audio_codec.png[align=center]
 
 [[sensors]]
 ==== Sensors
@@ -249,13 +249,13 @@ MEMS in conjunction with an embedded high resolution 24-bit equivalent
 ADC provide accurate pressure [Pascals] / altitude [meters] and
 temperature [degrees Celsius] data.
 
-[[img87]]
+[[mpl33115a2_diagram]]
 .MPL3115A2 Block Diagram
-image::media/image87.jpeg[align=center]
+image::media/mpl33115a2_diagram.jpeg[align=center]
 
-[[img88]]
+[[altimeter_schematics]]
 .Altimeter schematics
-image::media/image88.png[align=center]
+image::media/altimeter_schematics.png[align=center]
 
 [[accelerometer-and-magnetometer]]
 ===== Accelerometer and Magnetometer
@@ -264,13 +264,13 @@ The board also features FXOS8700CQ 6-axis sensor combines
 industry-leading 14-bit accelerometer and 16-bit magnetometer sensors in
 a small 3 x 3 x 1.2 mm QFN plastic package.
 
-[[img89]]
+[[accelerometer_magnetometer_diagram]]
 .FXOS8700CQ – Accelerometer/Magnetometer Block Diagram
-image::media/image89.jpeg[align=center]
+image::media/accelerometer_magnetometer_diagram.jpeg[align=center]
 
-[[img90]]
+[[accelerometer_magnetometer_schematics]]
 .Accelerometer/Magnetometer schematics
-image::media/image90.png[align=center]
+image::media/accelerometer_magnetometer_schematics.png[align=center]
 
 [[gyroscope]]
 ===== Gyroscope
@@ -278,13 +278,13 @@ image::media/image90.png[align=center]
 The IO board also features the NXP’s 3-axis digital gyroscope -
 FXAS21002.
 
-[[img91]]
+[[gyroscope_diagram]]
 .FXAS21002 Gyroscope Block Diagram
-image::media/image91.jpeg[align=center]
+image::media/gyroscope_diagram.jpeg[align=center]
 
-[[img92]]
+[[gyroscope_schematics]]
 .Gyroscope schematics
-image::media/image92.png[align=center]
+image::media/gyroscope_schematics.png[align=center]
 
 [[peripheral-expansion-port]]
 ==== Peripheral Expansion Port

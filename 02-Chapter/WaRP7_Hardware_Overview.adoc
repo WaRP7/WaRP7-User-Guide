@@ -32,13 +32,13 @@ expansion and debugging capabilities.
 |*Expansion* | MikroE Click header
 |================================================================
 
-[[image73]]
+[[cpu_board_diagram]]
 .CPU Board
-image::media/image73.png[align=center]
+image::media/cpu_board_diagram.png[align=center]
 
-[[image74]]
+[[io_board_diagram]]
 .IO Board
-image::media/image74.png[align=center]
+image::media/io_board_diagram.png[align=center]
 
 [[board-dimension-and-operating-environment]]
 === Board Dimension and Operating Environment
@@ -51,9 +51,9 @@ image::media/image74.png[align=center]
 |PCB Thickness |1.0 mm
 |=====================
 
-[[img]]
+[[cpu_board_dimensions]]
 .Board Dimensions
-image::media/image75.png[align=center]
+image::media/cpu_board_dimensions.png[align=center]
 
 The board operates in the commercial temperature range, 0°C ~ 85°C.
 
@@ -65,6 +65,6 @@ The board operates in the commercial temperature range, 0°C ~ 85°C.
 |PCB Thickness |1.0 mm
 |=====================
 
-[[img]]
+[[io_board_dimensions]]
 .Board Dimensions
-image::media/image76.png[align=center]
+image::media/io_board_dimensions.png[align=center]

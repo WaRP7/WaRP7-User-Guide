@@ -143,9 +143,9 @@ Below example shows to change gain control to 100%:
 
 Compile and run the "bc3770.c" from the utils folder.
 
-[[img93]]
+[[test_battery_charger]]
 .Testing Battery Charger
-image::media/image93.png[align=center]
+image::media/test_battery_charger.png[align=center]
 
 [[testing-sensors]]
 ==== Testing Sensors:
@@ -160,9 +160,9 @@ Run "i2cdetect" command to scan i2c bus for devices.
 
 *UU* shows devices already binded to platform/drivers.
 
-[[img94]]
+[[test_sensors]]
 .Testing Sensors
-image::media/image94.jpeg[align=center]
+image::media/test_sensors.jpeg[align=center]
 
 To detect sensor identity status we will check for "**WHOAMI**" register
 values.
@@ -193,18 +193,18 @@ FXOS8700CQR1 datasheet confirms the "WHOAMI" value.
 
 FXAS21002CQR1 datasheet confirms the "WHOAMI" value.
 
-[[img95]]
+[[sensors_hardware_detection]]
 .Sensors Hardware Detection
-image::media/image95.png[align=center]
+image::media/sensors_hardware_detection.png[align=center]
 
 With above detection we can confirm the sensor hardware is working.
 
 Sample codes "detect_acclerometer.c", "detect_gyrometer.c" and
 "detect_mpl3115.c" confirm the same.
 
-[[img96]]
+[[sensors_detection]]
 .Sensors Detection
-image::media/image96.png[align=center]
+image::media/sensors_detection.png[align=center]
 
 We developed a simple bare-metal application in Linux to access MPL3115
 sensor.
@@ -216,9 +216,9 @@ temperature values.
 
 You will get result as below (with debug enabled):
 
-[[img97]]
+[[temperature_test]]
 .Temperature Test
-image::media/image97.png[align=center]
+image::media/temperature_test.png[align=center]
 
 (Note: the code access */dev/i2c-3* interface, if *MPL3115A2* driver
 enabled in kernel, the code will fail due to device blocking by driver).
@@ -255,27 +255,27 @@ Lan".
 The firmware supporting "**BCM4339**" hardware is available in
 "**/lib/firmware/bcm**" directory.
 
-[[img98]]
+[[test_wifi]]
 .Testing Wifi
-image::media/image98.png[align=center]
+image::media/test_wifi.png[align=center]
 
 Automatic IP allocation using DHCP:
 
-[[img99]]
+[[automatic_ip_allocation]]
 .Automatic IP Allocation
-image::media/image99.png[align=center]
+image::media/automatic_ip_allocation.png[align=center]
 
 Verify IP address:
 
-[[img100]]
+[[verify_ip_address]]
 .Verify IP Address
-image::media/image100.png[align=center]
+image::media/verify_ip_address.png[align=center]
 
 Ping test:
 
-[[img101]]
+[[ping_test]]
 .Ping Test
-image::media/image101.png[align=center]
+image::media/ping_test.png[align=center]
 
 Change setting for *essid* & *password* in "/etc/network/interfaces"
 file.
@@ -310,36 +310,36 @@ After boot up, go to /root/lcd and run the following command:
 
   ./framebuffer.out
 
-[[img102]]
+[[framebuffer]]
 .Framebuffer mapped to memory
-image::media/image102.png[align=center]
+image::media/framebuffer.png[align=center]
 
 It will start the following sequence of displays.
 
-[[img103]]
+[[display1]]
 .Display 1
-image::media/image103.png[align=center]
+image::media/display1.png[align=center]
 
-[[img104]]
+[[display2]]
 .Display 2
-image::media/image104.png[align=center]
+image::media/display2.png[align=center]
 
-[[img105]]
+[[display3]]
 .Display 3
-image::media/image105.png[align=center]
+image::media/display3.png[align=center]
 
-[[img106]]
+[[display4]]
 .Display 4
-image::media/image106.png[align=center]
+image::media/display4.png[align=center]
 
-[[img107]]
+[[display5]]
 .Display 5
-image::media/image107.png[align=center]
+image::media/display5.png[align=center]
 
-[[img108]]
+[[display6]]
 .Display 6
-image::media/image108.png[align=center]
+image::media/display6.png[align=center]
 
-[[img109]]
+[[display7]]
 .Display 7
-image::media/image109.png[align=center]
+image::media/display7.png[align=center]
