@@ -6,7 +6,7 @@
 
 The WaRP7 is the next generation Internet of Things (IoT) and Wearable’s
 Reference Platform. WaRP7 is a powerful, low-cost platform designed for
-rapid prototyping and reduces time to market. WaRP7 is optimized, comes
+a fast prototyping and reduces time to market. WaRP7 is optimized, comes
 in a tiny form factor and yet flexible enough to offer all the
 advantages of traditional development tools. It has been architected and
 designed from the ground up to address key challenges in the IoT and
