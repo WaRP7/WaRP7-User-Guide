@@ -15,7 +15,7 @@ Command shown with prefix *~#* are to be run on board after linux up.
 
 *Steps:*
 
-. Extract the kernel and use the below commands to compile:
+. Extract the kernel and use the commands below to compile:
 
   $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- distclean
   $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- warp7_defconfig
@@ -79,7 +79,7 @@ will brick the board.
 
   => fuse prog 1 3 10002820
 
-. Set bootcmd environment params as below.
+. Set bootcmd environment params as below:
 
   => setenv bootcmd 'setenv mmcroot /dev/mmcblk2p3 rootwait rw;setenv
 bootargs console=$\{console},$\{baudrate} root=$\{mmcroot};mw 30330218
@@ -123,19 +123,19 @@ Place an audio file (ex: input.wav) in home directory and run command below:
 
  * Record audio using warp7
 
-Run below command, it will record audio file with 10 secs duration.
+Run command below, it will record audio file with 10 secs duration.
 
   ~# arecord -d 10 output.wav
 
 * To change volume control of headphone
 
-Below example shows how to change volume to 100%:
+Example below shows how to change volume to 100%:
 
   ~# amixer set 'Headphone' 100%
 
 * To change gain control of mic
 
-Below example shows to change gain control to 100%:
+Example below shows how to change gain control to 100%:
 
   ~# amixer set 'Mic' 100%
 
@@ -167,7 +167,7 @@ image::media/test_sensors.jpeg[align=center]
 To detect sensor identity status we will check for "**WHOAMI**" register
 values.
 
-Execute below commands in terminal:
+Execute commands below in terminal:
 
 *MPL3115A2:*
 
@@ -226,7 +226,7 @@ enabled in kernel, the code will fail due to device blocking by driver).
 With testing part over, we can proceed to further development using
 kernel supported drivers.
 
-Enable the supported drivers in kernel by setting the below values to
+Enable the supported drivers in kernel by setting the values below to
 "**y**" in *.config* or "**make menuconfig**":
 
   # CONFIG_SENSORS_FXOS8700 is not set
