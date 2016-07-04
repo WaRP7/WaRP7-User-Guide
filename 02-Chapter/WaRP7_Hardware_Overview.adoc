@@ -3,7 +3,7 @@
 
 The WaRP7 is the next generation Wearable’s Reference Platform based on
 the NXP iMX7 Solo applications processor.
-The kit consists of 2 boards
+The kit consists of 2 boards:
 
 * A *CPU board* featuring the ARM Cortex-A7 based iMX7 processor,
 memory, power management and a combo WiFi/BLE module.
@@ -13,6 +13,7 @@ expansion and debugging capabilities.
 [[featuresspecifications]]
 === Features/Specifications
 
+.Features and Specifications
 [cols="2",options="header",]
 |================================================================
 | Features | CPU Board
@@ -54,9 +55,9 @@ image::media/image74.png[align=center]
 .Board Dimensions
 image::media/image75.png[align=center]
 
-The board operates in the commercial temperature range, 0°C ~ 85°C
+The board operates in the commercial temperature range, 0°C ~ 85°C.
 
-.WaRP7 IO Board Dimensions*
+.WaRP7 IO Board Dimensions
 
 |=====================
 |Length |38 mm
@@ -65,5 +66,5 @@ The board operates in the commercial temperature range, 0°C ~ 85°C
 |=====================
 
 [[img]]
-.Image 76 - Board Dimensions
+.Board Dimensions
 image::media/image76.png[align=center]
