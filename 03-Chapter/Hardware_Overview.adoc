@@ -10,7 +10,7 @@
 Main Processor: NXP MCIMX7S3DVK08SA - i.MX7S with 12mm x 12mm MAPBGA,
 0.4mm.
 
-The i.MX7S applications processor houses an ARM Cortex-A7 core and an
+The i.MX7S applications processor has an ARM Cortex-A7 core and an
 ARM Cortex-M4. The device is targeted for IoT, Wearable and general
 embedded markets.
 
@@ -34,7 +34,7 @@ image::media/emcp_diagram.png[align=center]
 ==== Video and Display
 
 The WaRP7 CPU board provides output video from MIPI-DSI and accepts
-input through MIPI- CSI.
+input through MIPI-CSI.
 
 [[mipi-dsi]]
 ===== MIPI-DSI
