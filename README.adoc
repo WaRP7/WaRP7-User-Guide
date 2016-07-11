@@ -4,8 +4,14 @@
 
 Installs the needed packages on your host machine.
 
+.Ubuntu
 [source, console]
 $ sudo apt-get install bundler
+$ bundle install
+
+.Mac OS
+[source, console]
+$ sudo gem install bundler
 $ bundle install
 
 == Build
