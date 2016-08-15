@@ -1,0 +1,271 @@
+[[Software-Overview]]
+== Software Overview
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+ifndef::rootdir[:rootdir: ../]
+:imagesdir: {rootdir}/media
+
+*Note:*
+
+Command shown with prefix *$* are to be run on host machine (like ubuntu,
+etc.).
+
+Command shown with prefix *=>* are to be run on u-boot prompt.
+
+Command shown with prefix *~#* are to be run on board after linux up.
+
+[[U-Boot]]
+=== U-Boot
+
+==== Update U-Boot on WaRP7
+
+Required software on the host PC:
+
+- imx_usb_loader: https://github.com/boundarydevices/imx_usb_loader
+
+- dfu-util: http://dfu-util.sourceforge.net/releases/ (if you are in a
+Debian distribution then you can get it via libdfu-dev package)
+
+- libusb: http://libusb.org/ (if you are in a Debian distribution
+then you can get it via libusb-dev and libusb-1.0-0-dev)
+
+Clone U-Boot repository:
+
+[source,console]
+$ git clone git://git.denx.de/u-boot.git
+
+Inside the U-Boot folder, build U-Boot for WaRP7:
+
+[source,console]
+$ make mrproper
+$ make warp7_config
+$ make
+
+This will generate the U-Boot binary called u-boot.imx.
+
+Setup WaRP7 for loading U-Boot:
+
+. Remove the CPU board from the base board then put switch 2 in the upper position
+. Connect a USB to serial adapter between the host PC and WaRP7
+. Connect a USB cable between the OTG WaRP7 port and the host PC
+. Copy u-boot.imx to the imx_usb_loader folder.
+
+Load U-Boot via USB:
+
+[source,console]
+$ sudo ./imx_usb u-boot.imx
+
+Then U-Boot should start and its messages will appear in the console program.
+
+Open a terminal program such as minicom
+
+Use the default environment variables:
+
+[source,console]
+=> env default -f -a
+=> saveenv
+
+Run the DFU command:
+
+[source,console]
+=> dfu 0 mmc 0
+
+Transfer u-boot.imx that will be flashed into the eMMC:
+
+[source,console]
+$ sudo dfu-util -D u-boot.imx -a boot
+
+Then on the U-Boot prompt the following message should be seen after a
+successful upgrade:
+
+#DOWNLOAD ... OK
+Ctrl+C to exit ...
+
+Remove power from the WaRP7 board.
+
+Put WaRP7 board into normal boot mode (put the switch 2 in the lower position)
+
+Power up the board and the new updated U-Boot should boot from eMMC
+
+*Content based on:* http://git.denx.de/?p=u-boot.git;a=blob;f=board/warp7/README
+
+[[Linux-Kernel]]
+=== Linux Kernel
+
+==== Obtaining a Linux Kernel image
+
+[source,console]
+$ git clone https://github.com/Freescale/linux-fslc.git
+$ cd linux-fslc
+$ git checkout -b <name_your_branch> origin/4.1-1.0.x-imx
+
+Use the commands below to compile:
+
+[source,console]
+$ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- mrproper
+$ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- imx_v7_defconfig
+$ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- zImage
+$ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- modules
+$ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- imx7s-warp.dtb
+
+==== Loading a Linux Kernel image
+
+Power up your WaRP7, U-boot prompt will come (use any serial console i.e. minicom).
+
+Run the following command on u-boot:
+
+[source,console]
+=> ums 0 mmc 0
+
+You will be able to see emmc as storage device on your computer.
+
+Use any standard utility to make partition table (i.e. gparted)
+
+Create 2 partitions (100MB (Fat32) and remaining space
+as ext4).
+
+Copy zImage to the 100MB fat32 partition.
+
+Copy imx7s-warp.dtb to the 100MB fat32 partition.
+
+Install kernel modules to the rootfs as shown below:
+
+[source,console]
+$ sudo make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- modules_install
+INSTALL_MOD_PATH=/path_to_your_emmc_ext4_partition_mount
+
+*Note:*
+If you don't have a rootfs on your WaRP7 partition, you can obtain one by following the steps on *Chapter 4.3 The Yocto Project*
+
+Unmount the partitions using 
+
+[source,console]
+sudo umount /dev/sd<X>
+
+In u-boot prompt, hit **Ctrl+C**, to cancel the mounted mmc.
+
+Reboot your board, linux must be up and running.
+
+=== The Yocto Project
+
+Following the instructions from http://freescale.github.io/#download you can download the needed source code to build an image using the Yocto Project:
+
+Update the host needed packages
+
+.Ubuntu
+[source,console]
+$ sudo apt-get install gawk wget git-core diffstat unzip texinfo gcc-multilib \
+     build-essential chrpath socat libsdl1.2-dev xterm
+
+NOTE::If you use a different distributution, see http://www.yoctoproject.org/docs/current/yocto-project-qs/yocto-project-qs.html
+
+[source,console]
+$ mkdir ~/bin
+$ curl http://commondatastorage.googleapis.com/git-repo-downloads/repo >  ~/bin/repo
+$ chmod a+x ~/bin/repo
+$ PATH=${PATH}:~/bin
+$ mkdir fsl-community-bsp
+$ cd fsl-community-bsp
+$ repo init -u https://github.com/Freescale/fsl-community-bsp-platform -b krogoth
+$ repo sync
+
+You can also download a prebuilt image from http://freescale.github.io/#download and test it on your board.
+
+The download can take some time (such as 15 minutes) and depends on your Internet connection (please, make sure your proxy does allow your to download from external sources).
+
+After the download is completed, enable your environment:
+
+[source,console]
+$ source setup-environment build
+
+NOTE:: Please read the EULA and only press *y* if you accept it.
+
+After the environment is setup you have the following files:
+
+user@b19406-2:/code/yocto/master/build2$ tree
+
+[source,console]
+$ tree
+.
+└── conf
+    ├── bblayers.conf
+    ├── local.conf
+    ├── local.conf.sample
+    └── templateconf.cfg
+
+Change file `conf/local.conf` to configure the build system to target the WaRP7 machine as the following example:
+
+[source]
+----
+MACHINE ??= 'imx7s-warp'
+DISTRO ?= 'poky'
+PACKAGE_CLASSES ?= "package_rpm"
+EXTRA_IMAGE_FEATURES ?= "debug-tweaks"
+USER_CLASSES ?= "buildstats image-mklibs"
+PATCHRESOLVE = "noop"
+BB_DISKMON_DIRS = "\
+    STOPTASKS,${TMPDIR},1G,100K \
+    STOPTASKS,${DL_DIR},1G,100K \
+    STOPTASKS,${SSTATE_DIR},1G,100K \
+    STOPTASKS,/tmp,100M,100K \
+    ABORT,${TMPDIR},100M,1K \
+    ABORT,${DL_DIR},100M,1K \
+    ABORT,${SSTATE_DIR},100M,1K \
+    ABORT,/tmp,10M,1K"
+PACKAGECONFIG_append_pn-qemu-native = " sdl"
+PACKAGECONFIG_append_pn-nativesdk-qemu = " sdl"
+CONF_VERSION = "1"
+
+DL_DIR ?= "${BSPDIR}/downloads/"
+ACCEPT_FSL_EULA = "1"
+----
+
+NOTE:: The WaRP7 machine name is **imx7s-warp**
+
+After configuring the Yocto Project to use WaRP7 machine, you can build any desired image, such as:
+
+[source,console]
+$ bitbake fsl-image-machine-test
+
+The first build can take several hours (depending on your machine). When it completes the result can be found on `tmp/deploy/image/imx7s-warp` as show in the following example:
+
+[source,console]
+$ ls -l tmp/deploy/images/imx7s-warp/
+total 263084
+-rw-r--r-- 1 user user 67108864 Ago  8 11:58 core-image-base-imx7s-warp-20160808141615.rootfs.ext4
+-rw-r--r-- 1 user user     9568 Ago  8 11:58 core-image-base-imx7s-warp-20160808141615.rootfs.manifest
+-rw-r--r-- 1 user user 83886080 Ago  8 11:58 core-image-base-imx7s-warp-20160808141615.rootfs.sdcard
+-rw-r--r-- 1 user user 67108864 Ago  8 12:55 core-image-base-imx7s-warp-20160808155513.rootfs.ext4
+-rw-r--r-- 1 user user     9568 Ago  8 12:55 core-image-base-imx7s-warp-20160808155513.rootfs.manifest
+-rw-r--r-- 1 user user 83886080 Ago  8 12:55 core-image-base-imx7s-warp-20160808155513.rootfs.sdcard
+lrwxrwxrwx 1 user user       53 Ago  8 12:55 core-image-base-imx7s-warp.ext4 -> core-image-base-imx7s-warp-20160808155513.rootfs.ext4
+lrwxrwxrwx 1 user user       57 Ago  8 12:55 core-image-base-imx7s-warp.manifest -> core-image-base-imx7s-warp-20160808155513.rootfs.manifest
+lrwxrwxrwx 1 user user       58 Ago  8 12:55 core-image-base-imx7s-warp.sdcard.gz -> core-image-base-imx7s-warp-20160808155513.rootfs.sdcard.gz
+-rw-rw-r-- 2 user user   804917 Ago  8 10:28 modules--4.1-1.0.x+git0+b8fb01d418-r0-imx7s-warp-20160808132254.tgz
+lrwxrwxrwx 1 user user       67 Ago  8 10:28 modules-imx7s-warp.tgz -> modules--4.1-1.0.x+git0+b8fb01d418-r0-imx7s-warp-20160808132254.tgz
+-rw-r--r-- 2 user user      294 Ago  8 12:55 README_-_DO_NOT_DELETE_FILES_IN_THIS_DIRECTORY.txt
+lrwxrwxrwx 1 user user       47 Ago  8 10:31 u-boot.imx -> u-boot-sd-v2016.07+gitAUTOINC+ae973bc45d-r0.imx
+lrwxrwxrwx 1 user user       47 Ago  8 10:31 u-boot-imx7s-warp.imx -> u-boot-sd-v2016.07+gitAUTOINC+ae973bc45d-r0.imx
+lrwxrwxrwx 1 user user       47 Ago  8 10:31 u-boot-imx7s-warp.imx-sd -> u-boot-sd-v2016.07+gitAUTOINC+ae973bc45d-r0.imx
+lrwxrwxrwx 1 user user       47 Ago  8 10:31 u-boot.imx-sd -> u-boot-sd-v2016.07+gitAUTOINC+ae973bc45d-r0.imx
+-rwxr-xr-x 2 user user   347136 Ago  8 10:31 u-boot-sd-v2016.07+gitAUTOINC+ae973bc45d-r0.imx
+lrwxrwxrwx 1 user user       66 Ago  8 10:28 zImage -> zImage--4.1-1.0.x+git0+b8fb01d418-r0-imx7s-warp-20160808132254.bin
+-rw-r--r-- 2 user user  6514048 Ago  8 10:28 zImage--4.1-1.0.x+git0+b8fb01d418-r0-imx7s-warp-20160808132254.bin
+-rw-r--r-- 2 user user    33845 Ago  8 10:28 zImage--4.1-1.0.x+git0+b8fb01d418-r0-imx7s-warp-20160808132254.dtb
+lrwxrwxrwx 1 user user       66 Ago  8 10:28 zImage-imx7s-warp.bin -> zImage--4.1-1.0.x+git0+b8fb01d418-r0-imx7s-warp-20160808132254.bin
+lrwxrwxrwx 1 user user       66 Ago  8 10:28 zImage-imx7s-warp.dtb -> zImage--4.1-1.0.x+git0+b8fb01d418-r0-imx7s-warp-20160808132254.dtb
+
+The complete image (rootfs + u-boot + kernel)  is **core-image-base-imx7s-warp-20160808155513.rootfs.sdcard.gz** (the numbers on image name vary depending on build date)
+
+The steps to update the image:
+
+.board steps (u-boot)
+[source,console]
+=> ums 0 mmc 0
+
+.host steps
+[source,console]
+$ gunzip core-image-base-imx7s-warp-20160808155513.rootfs.sdcard.gz
+$ sudo dd if=core-image-base-imx7s-warp-20160808155513.rootfs.sdcard of=/dev/sdX
+
+It may take few minutes. As soon as the dd command is finished, you can reboot the board.
