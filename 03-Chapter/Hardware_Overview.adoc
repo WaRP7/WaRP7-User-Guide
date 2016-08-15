@@ -1,6 +1,10 @@
 [[hardware-overview]]
 == Hardware Overview
 
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+ifndef::rootdir[:rootdir: ../]
+:imagesdir: {rootdir}/media
+
 [[cpu-board]]
 === CPU Board
 
@@ -16,7 +20,7 @@ embedded markets.
 
 [[soc_diagram]]
 .iMX7S SoC Diagram
-image::media/soc_diagram.jpeg[align=center]
+image::soc_diagram.jpeg[align=center]
 
 [[memory-emcp-lpddr3-and-emmc]]
 ==== Memory eMCP – LPDDR3 and eMMC
@@ -28,7 +32,7 @@ package.
 
 [[emcp_diagram]]
 .Kingston eMCP Block Diagram
-image::media/emcp_diagram.png[align=center]
+image::emcp_diagram.png[align=center]
 
 [[video-and-display]]
 ==== Video and Display
@@ -44,7 +48,7 @@ video from the i.MX7S MIPI-DSI PHY via the MIPI-DSI interface.
 
 [[mipi-dsi_connector]]
 .MIPI-DSI connector
-image::media/mipi-dsi_connector.png[align=center]
+image::mipi-dsi_connector.png[align=center]
 
 [[capacitive-touch-screen]]
 ====== Capacitive Touch Screen
@@ -53,7 +57,7 @@ Capacitive touch screen is supported by I2C via touch screen port.
 
 [[touch_screen_interface]]
 .Touch Screen Interface
-image::media/touch_screen_interface.png[align=center]
+image::touch_screen_interface.png[align=center]
 
 [[mipi-csi]]
 ===== MIPI-CSI
@@ -63,7 +67,7 @@ camera module.
 
 [[mipi_csi_connector]]
 .MIPI CSI connector
-image::media/mipi_csi_connector.png[align=center]
+image::mipi_csi_connector.png[align=center]
 
 [[connectivity]]
 ==== Connectivity
@@ -82,11 +86,11 @@ circuits.
 
 [[bcm4343w_module]]
 .Murata 1DX module
-image::media/bcm4343w_module.jpeg[align=center]
+image::bcm4343w_module.jpeg[align=center]
 
 [[design_1dx]]
 .Design implementation of 1DX
-image::media/design_1dx.png[align=center]
+image::design_1dx.png[align=center]
 
 [[usb-otg]]
 ===== USB-OTG
@@ -107,7 +111,7 @@ write cycle limitations of the EEPROM memory.
 
 [[nfc_schematic]]
 .NFC circuitry
-image::media/nfc_schematic.png[align=center]
+image::nfc_schematic.png[align=center]
 
 [[power-management]]
 ==== Power Management
@@ -123,7 +127,7 @@ peripherals to provide a single-chip system power solution.
 
 [[pf3000_diagram]]
 .PF3000 Functional Block diagram
-image::media/pf3000_diagram.jpeg[align=center]
+image::pf3000_diagram.jpeg[align=center]
 
 [[power-tree-design]]
 ===== Power Tree Design
@@ -228,7 +232,7 @@ codec with MIC In and Line Out capability.
 
 [[audio_codec]]
 .Freescale SGTL5000 Audio Codec
-image::media/audio_codec.png[align=center]
+image::audio_codec.png[align=center]
 
 [[sensors]]
 ==== Sensors
@@ -251,11 +255,11 @@ temperature [degrees Celsius] data.
 
 [[mpl33115a2_diagram]]
 .MPL3115A2 Block Diagram
-image::media/mpl33115a2_diagram.jpeg[align=center]
+image::mpl33115a2_diagram.jpeg[align=center]
 
 [[altimeter_schematics]]
 .Altimeter schematics
-image::media/altimeter_schematics.png[align=center]
+image::altimeter_schematics.png[align=center]
 
 [[accelerometer-and-magnetometer]]
 ===== Accelerometer and Magnetometer
@@ -266,11 +270,11 @@ a small 3 x 3 x 1.2 mm QFN plastic package.
 
 [[accelerometer_magnetometer_diagram]]
 .FXOS8700CQ – Accelerometer/Magnetometer Block Diagram
-image::media/accelerometer_magnetometer_diagram.jpeg[align=center]
+image::accelerometer_magnetometer_diagram.jpeg[align=center]
 
 [[accelerometer_magnetometer_schematics]]
 .Accelerometer/Magnetometer schematics
-image::media/accelerometer_magnetometer_schematics.png[align=center]
+image::accelerometer_magnetometer_schematics.png[align=center]
 
 [[gyroscope]]
 ===== Gyroscope
@@ -280,11 +284,11 @@ FXAS21002.
 
 [[gyroscope_diagram]]
 .FXAS21002 Gyroscope Block Diagram
-image::media/gyroscope_diagram.jpeg[align=center]
+image::gyroscope_diagram.jpeg[align=center]
 
 [[gyroscope_schematics]]
 .Gyroscope schematics
-image::media/gyroscope_schematics.png[align=center]
+image::gyroscope_schematics.png[align=center]
 
 [[peripheral-expansion-port]]
 ==== Peripheral Expansion Port
