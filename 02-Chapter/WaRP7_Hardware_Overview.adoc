@@ -1,6 +1,10 @@
 [[warp7-hardware-overview]]
 == WaRP7 Hardware Overview
 
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+ifndef::rootdir[:rootdir: ../]
+:imagesdir: {rootdir}/media
+
 The WaRP7 is the next generation Wearable’s Reference Platform based on
 the NXP iMX7 Solo applications processor.
 The kit consists of 2 boards:
@@ -34,11 +38,11 @@ expansion and debugging capabilities.
 
 [[cpu_board_diagram]]
 .CPU Board
-image::media/cpu_board_diagram.png[align=center]
+image::cpu_board_diagram.png[align=center]
 
 [[io_board_diagram]]
 .IO Board
-image::media/io_board_diagram.png[align=center]
+image::io_board_diagram.png[align=center]
 
 [[board-dimension-and-operating-environment]]
 === Board Dimension and Operating Environment
@@ -53,7 +57,7 @@ image::media/io_board_diagram.png[align=center]
 
 [[cpu_board_dimensions]]
 .Board Dimensions
-image::media/cpu_board_dimensions.png[align=center]
+image::cpu_board_dimensions.png[align=center]
 
 The board operates in the commercial temperature range, 0°C ~ 85°C.
 
@@ -67,4 +71,4 @@ The board operates in the commercial temperature range, 0°C ~ 85°C.
 
 [[io_board_dimensions]]
 .Board Dimensions
-image::media/io_board_dimensions.png[align=center]
+image::io_board_dimensions.png[align=center]
