@@ -89,104 +89,62 @@ Power up the board and the new updated U-Boot should boot from eMMC
 
 *Content based on:* http://git.denx.de/?p=u-boot.git;a=blob;f=board/warp7/README
 
-[[compilation]]
-=== Compilation
+[[Linux-Kernel]]
+=== Linux Kernel
 
-*Steps:*
+==== Obtaining a Linux Kernel image
 
-. Extract the kernel and use the commands below to compile:
+[source,console]
+$ git clone https://github.com/Freescale/linux-fslc.git
+$ cd linux-fslc
+$ git checkout -b <name_your_branch> origin/4.1-1.0.x-imx
 
-  $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- distclean
-  $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- warp7_defconfig
-  $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- zImage
-  $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- modules
-  $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- imx7d-warp7-mipi-dsi.dtb
+Use the commands below to compile:
 
-. Extract and compile imx_usb_loader-master.
+[source,console]
+$ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- mrproper
+$ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- imx_v7_defconfig
+$ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- zImage
+$ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- modules
+$ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- imx7s-warp.dtb
 
-. Run imx_usb to load u-boot for the first time in the board.
+==== Loading a Linux Kernel image
 
-  $ cd imx_usb_loader-master
-  $ make
-  $ ./imx_usb u-boot.imx
+Power up your WaRP7, U-boot prompt will come (use any serial console i.e. minicom).
 
-. U-boot prompt will come (we are using minicom).
+Run the following command on u-boot:
 
-. Run on u-boot:
+[source,console]
+=> ums 0 mmc 0
 
-  => ums 0 mmc 0
+You will be able to see emmc as storage device on your computer.
 
-. Now you will be able to see emmc as storage device on your computer.
+Use any standard utility to make partition table (i.e. gparted)
 
-. Use any standard utility to make partition table.
-
-. Create 3 partitions (10MB (Fat32), 100MB (Fat32) and remaining space
+Create 2 partitions (100MB (Fat32) and remaining space
 as ext4).
 
-. Copy zImage to the 100MB fat32 partition.
+Copy zImage to the 100MB fat32 partition.
 
-. Rename and copy *imx7d-warp7-mipi-dsi.dtb* as *warp7.dtb* to the
-100MB fat32 partition.
+Copy imx7s-warp.dtb to the 100MB fat32 partition.
 
-. Copy the *rootfs_debian.tar.bz2* to the 3rd ext4 partition.
+Install kernel modules to the rootfs as shown below:
 
-. Now install kernel modules to the rootfs as shown below:
-
-  $ sudo make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- modules_install
+[source,console]
+$ sudo make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- modules_install
 INSTALL_MOD_PATH=/path_to_your_emmc_ext4_partition_mount
 
-. Now unmount the partitions using "*sudo umount /dev/sdX*"
-command.
+*Note:*
+If you don't have a rootfs on your WaRP7 partition, you can obtain one by following the steps on *Chapter 4.3 The Yocto Project*
 
-. In u-boot prompt, hit **Ctrl+c**, to cancel the mounted mmc.
+Unmount the partitions using 
 
-. In u-boot prompt, use *loadx* command to load *u-boot* to ram.
-+
-After loadx completed , press **ctrl+a**, then *s* to select xmodem for
-u-boot transfer.
-+
-  => loadx
-+
-Save the uboot in emmc.
-+
-  => mmc write 0x80800000 2 0x2a6
-+
-*<CAUTION>*
-+
-. Now fuse the OTP. This command is one time only, be careful otherwise it
-will brick the board.
+[source,console]
+sudo umount /dev/sd<X>
 
-  => fuse prog 1 3 10002820
+In u-boot prompt, hit **Ctrl+C**, to cancel the mounted mmc.
 
-. Set bootcmd environment params as below:
-
-  => setenv bootcmd 'setenv mmcroot /dev/mmcblk2p3 rootwait rw;setenv
-bootargs console=$\{console},$\{baudrate} root=$\{mmcroot};mw 30330218
-0;fatload mmc 0:2 0x80800000 zImage;fatload mmc 0:2 0x83000000
-warp7.dtb;bootz 0x80800000 - 0x83000000'
-  => saveenv
-  => run bootcmd
-+
-Now linux must be up and running.
-+
-. Using NET OVER USB, we build USB ethernet build as **module**.
-
-Use commands below on the board to load the modules.
-
-Note: using static IP in your host system. We are using as below in
-*/etc/network/interfaces*:
-
-*192.168.7.10,*
-
-*255.255.255.0,*
-
-*192.168.7.1*
-
-  ~# insmod /lib/modules/4.1.15/kernel/drivers/usb/gadget/libcomposite.ko
-  ~# insmod /lib/modules/4.1.15/kernel/drivers/usb/gadget/function/u_ether.ko
-  ~# insmod /lib/modules/4.1.15/kernel/drivers/usb/gadget/function/usb_f_rndis.ko
-  ~# insmod /lib/modules/4.1.15/kernel/drivers/usb/gadget/legacy/g_ether.ko
-  ~# ifup usb0
+Reboot your board, linux must be up and running.
 
 === The Yocto Project
 
