@@ -1,5 +1,5 @@
-[[linux-software]]
-== Linux Software
+[[Software-Overview]]
+== Software Overview
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 ifndef::rootdir[:rootdir: ../]
@@ -13,6 +13,79 @@ etc.).
 Command shown with prefix *=>* are to be run on u-boot prompt.
 
 Command shown with prefix *~#* are to be run on board after linux up.
+
+[[U-Boot]]
+=== U-Boot
+
+==== Update U-Boot on WaRP7
+
+Required software on the host PC:
+
+- imx_usb_loader: https://github.com/boundarydevices/imx_usb_loader
+
+- dfu-util: http://dfu-util.sourceforge.net/releases/ (if you are in a
+Debian distribution then you can get it via libdfu-dev package)
+
+- libusb: http://libusb.org/ (if you are in a Debian distribution
+then you can get it via libusb-dev and libusb-1.0-0-dev)
+
+Clone U-Boot repository:
+
+[source,console]
+$ git clone git://git.denx.de/u-boot.git
+
+Inside the U-Boot folder, build U-Boot for WaRP7:
+
+[source,console]
+$ make mrproper
+$ make warp7_config
+$ make
+
+This will generate the U-Boot binary called u-boot.imx.
+
+Setup WaRP7 for loading U-Boot:
+
+. Remove the CPU board from the base board then put switch 2 in the upper position
+. Connect a USB to serial adapter between the host PC and WaRP7
+. Connect a USB cable between the OTG WaRP7 port and the host PC
+. Copy u-boot.imx to the imx_usb_loader folder.
+
+Load U-Boot via USB:
+
+[source,console]
+$ sudo ./imx_usb u-boot.imx
+
+Then U-Boot should start and its messages will appear in the console program.
+
+Open a terminal program such as minicom
+
+Use the default environment variables:
+
+[source,console]
+=> env default -f -a
+=> saveenv
+
+Run the DFU command:
+
+[source,console]
+=> dfu 0 mmc 0
+
+Transfer u-boot.imx that will be flashed into the eMMC:
+
+[source,console]
+$ sudo dfu-util -D u-boot.imx -a boot
+
+Then on the U-Boot prompt the following message should be seen after a
+successful upgrade:
+
+#DOWNLOAD ... OK
+Ctrl+C to exit ...
+
+Remove power from the WaRP7 board.
+
+Put WaRP7 board into normal boot mode (put the switch 2 in the lower position)
+
+Power up the board and the new updated U-Boot should boot from eMMC
 
 [[compilation]]
 === Compilation
