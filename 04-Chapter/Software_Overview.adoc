@@ -87,6 +87,8 @@ Put WaRP7 board into normal boot mode (put the switch 2 in the lower position)
 
 Power up the board and the new updated U-Boot should boot from eMMC
 
+*Content based on:* http://git.denx.de/?p=u-boot.git;a=blob;f=board/warp7/README
+
 [[compilation]]
 === Compilation
 
