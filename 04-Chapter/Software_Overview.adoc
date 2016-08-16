@@ -46,11 +46,13 @@ This will generate the U-Boot binary called u-boot.imx.
 Setup WaRP7 for loading U-Boot:
 
 . Remove the CPU board from the base board then put switch 2 in the upper position
-. Connect a USB to serial adapter between the host PC and WaRP7
-. Connect a USB cable between the OTG WaRP7 port and the host PC
-. Copy u-boot.imx to the imx_usb_loader folder.
+. Reconnect the CPU board to the base board
+. Connect a USB to serial adapter between the host PC and WaRP7 (USB port on the base board)
+. Connect a USB cable between the OTG WaRP7 port and the host PC (USB port on the CPU board)
 
 Load U-Boot via USB:
+
+Copy u-boot.imx to the imx_usb_loader folder.
 
 [source,console]
 $ sudo ./imx_usb u-boot.imx
@@ -75,8 +77,7 @@ Transfer u-boot.imx that will be flashed into the eMMC:
 [source,console]
 $ sudo dfu-util -D u-boot.imx -a boot
 
-Then on the U-Boot prompt the following message should be seen after a
-successful upgrade:
+The following message should be seen on the U-Boot prompt after a successful upgrade:
 
 #DOWNLOAD ... OK
 Ctrl+C to exit ...
@@ -119,20 +120,19 @@ Run the following command on u-boot:
 
 You will be able to see emmc as storage device on your computer.
 
-Use any standard utility to make partition table (i.e. gparted)
+Use any standard utility to make partition table. (i.e. gparted)
 
-Create 2 partitions (100MB (Fat32) and remaining space
-as ext4).
+Create 2 partitions, a 100MB FAT32 partition and define the remaing space as an ext4 partition.
 
-Copy zImage to the 100MB fat32 partition.
+Copy zImage to the fat32 partition.
 
-Copy imx7s-warp.dtb to the 100MB fat32 partition.
+Copy imx7s-warp.dtb to the fat32 partition.
 
 Install kernel modules to the rootfs as shown below:
 
 [source,console]
 $ sudo make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- modules_install
-INSTALL_MOD_PATH=/path_to_your_emmc_ext4_partition_mount
+INSTALL_MOD_PATH=/media/<user>/<rootfs partition>/lib/
 
 *Note:*
 If you don't have a rootfs on your WaRP7 partition, you can obtain one by following the steps on *Chapter 4.3 The Yocto Project*
