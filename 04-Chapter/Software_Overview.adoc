@@ -46,8 +46,9 @@ This will generate the U-Boot binary called u-boot.imx.
 Setup WaRP7 for loading U-Boot:
 
 . Remove the CPU board from the base board then put switch 2 in the upper position
-. Connect a USB to serial adapter between the host PC and WaRP7
-. Connect a USB cable between the OTG WaRP7 port and the host PC
+. Reconnect the CPU board to the base board
+. Connect a USB to serial adapter between the host PC and WaRP7 (USB port on the base board)
+. Connect a USB cable between the OTG WaRP7 port and the host PC (USB port on the CPU board)
 . Copy u-boot.imx to the imx_usb_loader folder.
 
 Load U-Boot via USB:
