@@ -120,20 +120,19 @@ Run the following command on u-boot:
 
 You will be able to see emmc as storage device on your computer.
 
-Use any standard utility to make partition table (i.e. gparted)
+Use any standard utility to make partition table. (i.e. gparted)
 
-Create 2 partitions (100MB (Fat32) and remaining space
-as ext4).
+Create 2 partitions, a 100MB FAT32 partition and define the remaing space as an ext4 partition.
 
-Copy zImage to the 100MB fat32 partition.
+Copy zImage to the fat32 partition.
 
-Copy imx7s-warp.dtb to the 100MB fat32 partition.
+Copy imx7s-warp.dtb to the fat32 partition.
 
 Install kernel modules to the rootfs as shown below:
 
 [source,console]
 $ sudo make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- modules_install
-INSTALL_MOD_PATH=/path_to_your_emmc_ext4_partition_mount
+INSTALL_MOD_PATH=/media/<user>/<rootfs partition>/lib/
 
 *Note:*
 If you don't have a rootfs on your WaRP7 partition, you can obtain one by following the steps on *Chapter 4.3 The Yocto Project*
