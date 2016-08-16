@@ -49,9 +49,10 @@ Setup WaRP7 for loading U-Boot:
 . Reconnect the CPU board to the base board
 . Connect a USB to serial adapter between the host PC and WaRP7 (USB port on the base board)
 . Connect a USB cable between the OTG WaRP7 port and the host PC (USB port on the CPU board)
-. Copy u-boot.imx to the imx_usb_loader folder.
 
 Load U-Boot via USB:
+
+Copy u-boot.imx to the imx_usb_loader folder.
 
 [source,console]
 $ sudo ./imx_usb u-boot.imx
@@ -76,8 +77,7 @@ Transfer u-boot.imx that will be flashed into the eMMC:
 [source,console]
 $ sudo dfu-util -D u-boot.imx -a boot
 
-Then on the U-Boot prompt the following message should be seen after a
-successful upgrade:
+The following message should be seen on the U-Boot prompt after a successful upgrade:
 
 #DOWNLOAD ... OK
 Ctrl+C to exit ...
