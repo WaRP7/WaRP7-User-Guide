@@ -25,14 +25,14 @@ expansion and debugging capabilities.
 |*Memory* | 8GB, 8bit Embedded MMC/ 512MB LPDDR3
 |*PMIC* |PF3000 PMIC and BC3770 battery charger.
 |*Wireless* |Combo WiFI/BLE
-|*Display/Camera interface* | MIPI-DSI connector / MIPI-CSI connector
+|*Display/Camera interface* | MIPI-DSI connector / MIPI - CSI connector
 |*Power Source* |USB/Battery
 |*PCB* | 38mm x 23mm / 10 layers
-|*Indicators* | 1-Power, 1 – User
+|*Indicators* | 1 - Power, 1 - User
 |*Features* | *IO Board*
 |*Debug Support* | JTAG, Serial Header
 |*Sensors* | Accelerometer, Magnetometer Pressure Sensor Gyroscope
-|*Audio* | Stereo codec – Mic In / Line Out
+|*Audio* | Stereo codec - Mic In / Line Out
 |*Expansion* | MikroE Click header
 |================================================================
 
