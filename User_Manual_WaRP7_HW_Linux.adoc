@@ -9,10 +9,8 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
 include::01-Chapter/Introduction.adoc[]
 
-include::02-Chapter/WaRP7_Hardware_Overview.adoc[]
+include::02-Chapter/Hardware_Overview.adoc[]
 
-include::03-Chapter/Hardware_Overview.adoc[]
-
-include::04-Chapter/Software_Overview.adoc[]
+include::03-Chapter/Software_Overview.adoc[]
 
 include::LICENSE.adoc[]
