@@ -17,7 +17,7 @@ Command shown with prefix *~#* are to be run on board after linux up.
 [[U-Boot]]
 === U-Boot
 
-==== Update U-Boot on WaRP7
+==== Obtaining an U-Boot image
 
 Required software on the host PC:
 
@@ -42,6 +42,8 @@ $ make warp7_config
 $ make
 
 This will generate the U-Boot binary called u-boot.imx.
+
+==== Updating an U-Boot image
 
 Setup WaRP7 for loading U-Boot:
 
@@ -109,7 +111,7 @@ $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- zImage
 $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- modules
 $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- imx7s-warp.dtb
 
-==== Loading a Linux Kernel image
+==== Updating a Linux Kernel image
 
 Power up your WaRP7, U-boot prompt will come (use any serial console i.e. minicom).
 
