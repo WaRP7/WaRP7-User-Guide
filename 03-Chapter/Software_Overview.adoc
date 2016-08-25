@@ -5,6 +5,30 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 ifndef::rootdir[:rootdir: ../]
 :imagesdir: {rootdir}/media
 
+The software implementation is a moving target. The table below shows the current status of the software implementation for each hardware feature.
+
+In order to get the latest pre-built image, please go to http://freescale.github.io/#download
+
+.Current Software implementation
+[cols="3",options="header",]
+|================================================================
+|Features | kernel | Firmware
+|PMIC (PF3000)| YES |  <1>
+|Battery Charger (BC3770) | YES | <1>
+|WiFi/BLE | YES | <2>
+|Accelerometer (FXAS8700)| YES |<1>
+|Magnetometer (FXAS8700)| YES |<1>
+|Pressure Sensor Gyroscope (FXOS21002)| YES |<1>
+|Audio (SGTL5000) | YES |<1>
+|Display| NO | <1>
+|Touchscreen | NO | <2>
+|Camera interface| NO | <2>
+|================================================================
+.Legend
+. No firmware needed.
+. Firmware is needed and is not installed automatically.
+. Firmware is needed and installed.
+
 *Note:*
 
 Command shown with prefix *$* are to be run on host machine (like ubuntu,
@@ -17,7 +41,7 @@ Command shown with prefix *~#* are to be run on board after linux up.
 [[U-Boot]]
 === U-Boot
 
-==== Update U-Boot on WaRP7
+==== Obtaining an U-Boot image
 
 Required software on the host PC:
 
@@ -42,6 +66,8 @@ $ make warp7_config
 $ make
 
 This will generate the U-Boot binary called u-boot.imx.
+
+==== Updating an U-Boot image
 
 Setup WaRP7 for loading U-Boot:
 
@@ -109,7 +135,7 @@ $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- zImage
 $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- modules
 $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- imx7s-warp.dtb
 
-==== Loading a Linux Kernel image
+==== Updating a Linux Kernel image
 
 Power up your WaRP7, U-boot prompt will come (use any serial console i.e. minicom).
 
