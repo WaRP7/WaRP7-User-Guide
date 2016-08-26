@@ -11,19 +11,19 @@ In order to get the latest pre-built image, please go to http://freescale.github
 
 .Current Software implementation
 [cols="3",options="header",]
-|================================================================
-|Features | kernel | Firmware
-|PMIC (PF3000)| YES |  <1>
-|Battery Charger (BC3770) | YES | <1>
-|WiFi/BLE | YES | <2>
-|Accelerometer (FXAS8700)| YES |<1>
-|Magnetometer (FXAS8700)| YES |<1>
-|Pressure Sensor Gyroscope (FXOS21002)| YES |<1>
-|Audio (SGTL5000) | YES |<1>
-|Display| NO | <1>
-|Touchscreen | NO | <2>
-|Camera interface| NO | <2>
-|================================================================
+|======================================
+|PMIC (PF3000)              | YES |<1>
+|Battery Charger (BC3770)   | YES |<1>
+|WiFi/BLE (BCM4343W)        | YES |<2>
+|Accelerometer (FXOS8700CQ) | YES |<1>
+|Magnetometer (FXOS8700CQ)  | YES |<1>
+|Pressure Sensor(MPL3115A2) | YES |<1>
+|Gyroscope (FXAS21002)      | YES |<1>
+|Audio (SGTL5000)           | YES |<1>
+|Display                    | YES |<1>
+|Touchscreen                | NO  |<2>
+|Camera interface           | NO  |<2>
+|======================================
 .Legend
 . No firmware needed.
 . Firmware is needed and is not installed automatically.
