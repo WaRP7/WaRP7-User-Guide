@@ -56,11 +56,13 @@ then you can get it via libusb-dev and libusb-1.0-0-dev)
 Clone U-Boot repository:
 
 [source,console]
-$ git clone git://git.denx.de/u-boot.git
+$ git clone https://github.com/Freescale/u-boot-fslc.git
 
-Inside the U-Boot folder, build U-Boot for WaRP7:
+Go inside the u-boot-fslc folder, build U-Boot for WaRP7:
 
 [source,console]
+$ cd u-boot-fslc/
+$ git checkout -b <name_local_branch> origin/2016.07+fslc
 $ make mrproper
 $ make warp7_config
 $ make
