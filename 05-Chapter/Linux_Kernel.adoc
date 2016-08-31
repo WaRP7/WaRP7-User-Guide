@@ -1,0 +1,60 @@
+[[Linux-Kernel]]
+== Linux Kernel
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+ifndef::rootdir[:rootdir: ../]
+:imagesdir: {rootdir}/media
+
+=== Obtaining a Linux Kernel image
+
+[source,console]
+$ git clone https://github.com/Freescale/linux-fslc.git
+$ cd linux-fslc
+$ git checkout -b <name_your_branch> origin/4.1-1.0.x-imx
+
+Use the commands below to compile:
+
+[source,console]
+$ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- mrproper
+$ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- imx_v7_defconfig
+$ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- zImage
+$ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- modules
+$ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- imx7s-warp.dtb
+
+=== Updating a Linux Kernel image
+
+Power up your WaRP7, U-boot prompt will come (use any serial console i.e. minicom).
+
+Run the following command on u-boot:
+
+[source,console]
+=> ums 0 mmc 0
+
+You will be able to see emmc as storage device on your computer.
+
+Use any standard utility to make partition table. (i.e. gparted)
+
+Create 2 partitions, a 100MB FAT32 partition and define the remaing space as an ext4 partition.
+
+Copy zImage to the fat32 partition.
+
+Copy imx7s-warp.dtb to the fat32 partition.
+
+Install kernel modules to the rootfs as shown below:
+
+[source,console]
+$ sudo make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- modules_install
+INSTALL_MOD_PATH=/media/<user>/<rootfs partition>/lib/
+
+*Note:*
+If you don't have a rootfs on your WaRP7 partition, you can obtain one by following the steps on *Chapter 4.3 The Yocto Project*
+
+Unmount the partitions using 
+
+[source,console]
+sudo umount /dev/sd<X>
+
+In u-boot prompt, hit **Ctrl+C**, to cancel the mounted mmc.
+
+Reboot your board, linux must be up and running.
+
