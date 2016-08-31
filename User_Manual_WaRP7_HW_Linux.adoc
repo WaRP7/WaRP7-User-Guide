@@ -13,4 +13,10 @@ include::02-Chapter/Hardware_Overview.adoc[]
 
 include::03-Chapter/Software_Overview.adoc[]
 
+include::04-Chapter/U-boot.adoc[]
+
+include::05-Chapter/Linux_Kernel.adoc[]
+
+include::06-Chapter/Yocto_Project.adoc[]
+
 include::LICENSE.adoc[]
