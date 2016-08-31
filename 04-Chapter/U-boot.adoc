@@ -1,0 +1,84 @@
+[[U-Boot]]
+== U-Boot
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+ifndef::rootdir[:rootdir: ../]
+:imagesdir: {rootdir}/media
+
+=== Obtaining an U-Boot image
+
+Required software on the host PC:
+
+- imx_usb_loader: https://github.com/boundarydevices/imx_usb_loader
+
+- dfu-util: http://dfu-util.sourceforge.net/releases/ (if you are in a
+Debian distribution then you can get it via libdfu-dev package)
+
+- libusb: http://libusb.org/ (if you are in a Debian distribution
+then you can get it via libusb-dev and libusb-1.0-0-dev)
+
+Clone U-Boot repository:
+
+[source,console]
+$ git clone https://github.com/Freescale/u-boot-fslc.git
+
+Go inside the u-boot-fslc folder, build U-Boot for WaRP7:
+
+[source,console]
+$ cd u-boot-fslc/
+$ git checkout -b <name_local_branch> origin/2016.07+fslc
+$ make mrproper
+$ make warp7_config
+$ make
+
+This will generate the U-Boot binary called u-boot.imx.
+
+=== Updating an U-Boot image
+
+Setup WaRP7 for loading U-Boot:
+
+. Remove the CPU board from the base board then put switch 2 in the upper position
+. Reconnect the CPU board to the base board
+. Connect a USB to serial adapter between the host PC and WaRP7 (USB port on the base board)
+. Connect a USB cable between the OTG WaRP7 port and the host PC (USB port on the CPU board)
+
+Load U-Boot via USB:
+
+Copy u-boot.imx to the imx_usb_loader folder.
+
+[source,console]
+$ sudo ./imx_usb u-boot.imx
+
+Then U-Boot should start and its messages will appear in the console program.
+
+Open a terminal program such as minicom
+
+Use the default environment variables:
+
+[source,console]
+=> env default -f -a
+=> saveenv
+
+Run the DFU command:
+
+[source,console]
+=> dfu 0 mmc 0
+
+Transfer u-boot.imx that will be flashed into the eMMC:
+
+[source,console]
+$ sudo dfu-util -D u-boot.imx -a boot
+
+The following message should be seen on the U-Boot prompt after a successful upgrade:
+
+#DOWNLOAD ... OK
+Ctrl+C to exit ...
+
+Remove power from the WaRP7 board.
+
+Put WaRP7 board into normal boot mode (put the switch 2 in the lower position)
+
+Power up the board and the new updated U-Boot should boot from eMMC
+
+*Content based on:* http://git.denx.de/?p=u-boot.git;a=blob;f=board/warp7/README
+
