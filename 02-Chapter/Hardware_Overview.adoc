@@ -305,11 +305,11 @@ image::io_board_dimensions.png[align=center]
 [[audio]]
 === Audio
 
-The IO board includes the Freescale SGTL5000 – an ultra-low power audio
+The IO board includes the NXP SGTL5000 – an ultra-low power audio
 codec with MIC In and Line Out capability.
 
 [[audio_codec]]
-.Freescale SGTL5000 Audio Codec
+.NXP SGTL5000 Audio Codec
 image::audio_codec.png[align=center]
 
 [[sensors]]
