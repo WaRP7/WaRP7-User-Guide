@@ -7,15 +7,15 @@ namespace :build do
   desc 'Generate HTML outputs'
   task :html => :prebuild do
     puts "Converting to HTML..."
-    `bundle exec asciidoctor User_Manual_WaRP7_HW_Linux.adoc`
-    puts " -- HTML output at User_Manual_WaRP7_HW_Linux.html"
+    `bundle exec asciidoctor User_Guide_Manual.adoc`
+    puts " -- HTML output at User_Guide_Manual.html"
   end
 
   desc 'Generate PDF outputs'
   task :pdf => :prebuild do
     puts "Converting to PDF... (this one takes a while)"
-    `bundle exec asciidoctor-pdf User_Manual_WaRP7_HW_Linux.adoc`
-    puts " -- PDF  output at User_Manual_WaRP7_HW_Linux.pdf"
+    `bundle exec asciidoctor-pdf User_Guide_Manual.adoc`
+    puts " -- PDF  output at User_Guide_Manual.pdf"
   end
 
 end

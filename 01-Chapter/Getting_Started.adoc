@@ -1,9 +1,24 @@
 [[introduction]]
-== Introduction
+== Getting started with WaRP7
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 ifndef::rootdir[:rootdir: ../]
 :imagesdir: {rootdir}/media
+
+=== Introduction
+
+This User Guide Manual is a moving document hosted at https://github.com/WaRP7/WaRP7-User-Guide.
+
+If you find any mistake, error or typo, please create an issue at https://github.com/WaRP7/WaRP7-User-Guide/issues.
+Pull requests are also very welcome. You can help us to develop this document
+sending pull requests for fixes or adding new sections.
+
+You can find help on how to create a pull request use https://help.github.com/articles/about-pull-requests/[GitHub Help]
+
+In case of doubt about the content of this document, please also create an issue
+at https://github.com/WaRP7/WaRP7-User-Guide/issues.
+
+include::../LICENSE.adoc[]
 
 [[platform-purpose]]
 === Platform Purpose
@@ -43,44 +58,36 @@ image::warp.png[align=center]
 [[getting-started-with-hardware]]
 === Getting Started with Hardware
 
-* STEP 1: Connect NFC cables to IO board
+. Connect NFC antenna to IO board
 +
-[[nfc_connectors]]
-.Step 1
+.Where to connect the NFC antenna
 image::nfc_connectors.png[align=center]
 
-* STEP 2: Connect CPU board
+. Connect CPU board
 +
-[[cpu_board]]
-.Step 2
+.The connectors for the CPU board
 image::cpu_board.png[align=center]
 
-* STEP 3: Connect battery
+. Connect battery
 +
-[[battery1]]
-.Step 3.1
+.The connector for the battery
 image::battery1.png[align=center]
 +
-[[battery2]]
-.Step 3.2
+.How the battery should be placed after attached
 image::battery2.png[align=center]
 
-* STEP 4: Connect LCD
+. Connect LCD
 +
-[[lcd1]]
-.Step 4.1
+.The first flat cable connected
 image::lcd1.png[align=center]
 +
-[[lcd2]]
-.Step 4.2
+.How to fold the flat cables and how to connect the second flat
 image::lcd2.png[align=center]
 +
-[[lcd3]]
-.Step 4.3
+.The WaRP7 board with the display
 image::lcd3.png[align=center]
 
-* STEP 5: Connect USB
-
-[[warp_connected]]
-.WaRP7 connected
+. Connect USB
++
+.Both USB cable connected
 image::warp_connected.png[align=center]

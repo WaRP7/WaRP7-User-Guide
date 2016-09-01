@@ -17,9 +17,13 @@ expansion and debugging capabilities.
 [[featuresspecifications]]
 === Features/Specifications
 
-.Features and Specifications
+The features present on CPU Board are listed on <<CPU Board>>.
+
+The board operates in the commercial temperature range, 0°C ~ 85°C.
+
+.CPU Board
 [cols="2",options="header",]
-|================================================================
+|===
 | Features | CPU Board
 |*Processor* | NXP iMX7S ARM Cortex-A7/Cortex-M4
 |*Memory* | 8GB, 8bit Embedded MMC/ 512MB LPDDR3
@@ -29,12 +33,22 @@ expansion and debugging capabilities.
 |*Power Source* |USB/Battery
 |*PCB* | 38mm x 23mm / 10 layers
 |*Indicators* | 1 - Power, 1 - User
-|*Features* | *IO Board*
+|===
+
+The features present on IO Board are listed on <<IO Board>>.
+
+.IO Board
+[cols="2",options="header",]
+|===
+|Features |IO Board
 |*Debug Support* | JTAG, Serial Header
 |*Sensors* | Accelerometer, Magnetometer Pressure Sensor Gyroscope
 |*Audio* | Stereo codec - Mic In / Line Out
 |*Expansion* | MikroE Click header
-|================================================================
+|===
+
+The following block diagrams show the connection present on each board and how
+the devices are connected.
 
 [[cpu_board_diagram]]
 .CPU Board
@@ -44,40 +58,25 @@ image::cpu_board_diagram.png[align=center]
 .IO Board
 image::io_board_diagram.png[align=center]
 
-[[board-dimension-and-operating-environment]]
-=== Board Dimension and Operating Environment
+[[cpu-board]]
+== CPU Board
+
+=== Board Dimensions
 
 .WaRP7 CPU Board Dimensions
-
 |=====================
 |Length |38 mm
 |Width |23 mm
 |PCB Thickness |1.0 mm
 |=====================
 
-[[cpu_board_dimensions]]
+
 .Board Dimensions
 image::cpu_board_dimensions.png[align=center]
 
-The board operates in the commercial temperature range, 0°C ~ 85°C.
-
-.WaRP7 IO Board Dimensions
-
-|=====================
-|Length |38 mm
-|Width |38 mm
-|PCB Thickness |1.0 mm
-|=====================
-
-[[io_board_dimensions]]
-.Board Dimensions
-image::io_board_dimensions.png[align=center]
-
-[[cpu-board]]
-=== CPU Board
 
 [[cpu]]
-==== CPU
+=== CPU
 
 Main Processor: NXP MCIMX7S3DVK08SA - i.MX7S with 12mm x 12mm MAPBGA,
 0.4mm.
@@ -91,7 +90,7 @@ embedded markets.
 image::soc_diagram.jpeg[align=center]
 
 [[memory-emcp-lpddr3-and-emmc]]
-==== Memory eMCP – LPDDR3 and eMMC
+=== Memory eMCP – LPDDR3 and eMMC
 
 The CPU Board features a Multi-Chip Package Memory
 08EMCP04-EL3AV100-C30U from Kingston which combines 8GB eMMC and 512MB
@@ -103,13 +102,13 @@ package.
 image::emcp_diagram.png[align=center]
 
 [[video-and-display]]
-==== Video and Display
+=== Video and Display
 
 The WaRP7 CPU board provides output video from MIPI-DSI and accepts
 input through MIPI-CSI.
 
 [[mipi-dsi]]
-===== MIPI-DSI
+==== MIPI-DSI
 
 The CPU board includes a MIPI-DSI connector for outputting the
 video from the i.MX7S MIPI-DSI PHY via the MIPI-DSI interface.
@@ -119,7 +118,7 @@ video from the i.MX7S MIPI-DSI PHY via the MIPI-DSI interface.
 image::mipi-dsi_connector.png[align=center]
 
 [[capacitive-touch-screen]]
-====== Capacitive Touch Screen
+===== Capacitive Touch Screen
 
 Capacitive touch screen is supported by I2C via touch screen port.
 
@@ -128,7 +127,7 @@ Capacitive touch screen is supported by I2C via touch screen port.
 image::touch_screen_interface.png[align=center]
 
 [[mipi-csi]]
-===== MIPI-CSI
+==== MIPI-CSI
 
 The CPU board includes a MIPI-CSI camera connector for connecting a CSI
 camera module.
@@ -138,14 +137,14 @@ camera module.
 image::mipi_csi_connector.png[align=center]
 
 [[connectivity]]
-==== Connectivity
+=== Connectivity
 
-The WaRP7 board will provide a number of connectivity including Wi-Fi,
-Bluetooth, Bluetooth (BLE), and USB-OTG. There will be provision for NFC
+The WaRP7 board provides a number of connectivity including Wi-Fi,
+Bluetooth, Bluetooth (BLE), and USB-OTG. There is provision for NFC
 as a passive tag primarily for Bluetooth pairing.
 
 [[wi-fibluetooth]]
-===== Wi-Fi/Bluetooth
+==== Wi-Fi/Bluetooth
 
 The Murata Type 1DX module is an ultra-small module that includes 2.4GHz
 WLAN IEEE 802.11b/g/n and Bluetooth Version 4.1 plus EDR functionality. Based on
@@ -161,13 +160,13 @@ image::bcm4343w_module.jpeg[align=center]
 image::design_1dx.png[align=center]
 
 [[usb-otg]]
-===== USB-OTG
+==== USB-OTG
 
 The CPU board provides an USB micro-AB connector to support USB-OTG
 function powered by the by USB OTG1 module on i.MX7S.
 
 [[nfc]]
-===== NFC
+==== NFC
 
 The board provides support for NFC using the NXP NT3H1101W0FHK. In
 addition to the passive NFC Forum compliant contactless interface, the
@@ -182,10 +181,10 @@ write cycle limitations of the EEPROM memory.
 image::nfc_schematic.png[align=center]
 
 [[power-management]]
-==== Power Management
+=== Power Management
 
 [[power-management-ic]]
-===== Power Management IC
+==== Power Management IC
 
 The NXP PF3000 power management integrated circuit (PMIC) features a
 configurable architecture that supports numerous outputs with various
@@ -198,7 +197,7 @@ peripherals to provide a single-chip system power solution.
 image::pf3000_diagram.jpeg[align=center]
 
 [[power-tree-design]]
-===== Power Tree Design
+==== Power Tree Design
 
 The usage of PF3000 output is as shown in <<PF3000 Output Power Up Sequence and Usage>> below.
 
@@ -273,7 +272,7 @@ PCIE_VPH PCIE_VPH_RX PCIE_VPH_TX
 |=================================================
 
 [[battery-charger]]
-===== Battery Charger
+==== Battery Charger
 
 The NXP BC3770 is a fully programmable switching charger with dual-path
 output for single-cell Li-Ion and Li-Polymer battery. The dual-path
@@ -289,29 +288,40 @@ I2C Interface that operates up to 400 kHz.
 * Highly integrated featuring OVP and Power FETs.
 * Supports 1.5 MHz switching capabilities.
 
-[[io-board]]
-=== IO Board
+== IO Board
+
+=== Board Dimensions
+
+.WaRP7 IO Board Dimensions
+|=====================
+|Length |38 mm
+|Width |38 mm
+|PCB Thickness |1.0 mm
+|=====================
+
+.Board Dimensions
+image::io_board_dimensions.png[align=center]
 
 [[audio]]
-==== Audio
+=== Audio
 
-The IO board includes the Freescale SGTL5000 – an ultra-low power audio
+The IO board includes the NXP SGTL5000 – an ultra-low power audio
 codec with MIC In and Line Out capability.
 
 [[audio_codec]]
-.Freescale SGTL5000 Audio Codec
+.NXP SGTL5000 Audio Codec
 image::audio_codec.png[align=center]
 
 [[sensors]]
-==== Sensors
+=== Sensors
 
-The WaRP7 board will include three sensors: altimeter, accelerometer and
+The WaRP7 board includes three sensors: altimeter, accelerometer and
 gyroscope. These three sensor chips share the I2C bus on i.MX7S. The
 sensors interrupts are wired to the processor as OR circuit. The
-software will determine which device asserted the interrupt.
+software determines which device asserted the interrupt.
 
 [[altimeter]]
-===== Altimeter
+==== Altimeter
 
 The board features NXP’s MPL3115A2 precision altimeter. The MPL3115A2 is
 a compact piezoresistive absolute pressure sensor with an I2C interface.
@@ -330,7 +340,7 @@ image::mpl33115a2_diagram.jpeg[align=center]
 image::altimeter_schematics.png[align=center]
 
 [[accelerometer-and-magnetometer]]
-===== Accelerometer and Magnetometer
+==== Accelerometer and Magnetometer
 
 The board also features FXOS8700CQ 6-axis sensor combines
 industry-leading 14-bit accelerometer and 16-bit magnetometer sensors in
@@ -345,7 +355,7 @@ image::accelerometer_magnetometer_diagram.jpeg[align=center]
 image::accelerometer_magnetometer_schematics.png[align=center]
 
 [[gyroscope]]
-===== Gyroscope
+==== Gyroscope
 
 The IO board also features the NXP’s 3-axis digital gyroscope -
 FXAS21002.
@@ -359,7 +369,7 @@ image::gyroscope_diagram.jpeg[align=center]
 image::gyroscope_schematics.png[align=center]
 
 [[peripheral-expansion-port]]
-==== Peripheral Expansion Port
+=== Peripheral Expansion Port
 
 The board provides expansion headers compatible with the *mikroBUS^TM^*
 socket connection standard for accessing the following communication

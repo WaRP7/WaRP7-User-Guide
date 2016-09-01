@@ -1,5 +1,5 @@
 = WaRP7: The IoT and Wearable Development Platform
-v0.53, Aug 16, 2016: User Guide
+v1.0, Sep 1st, 2016: User Guide Manual
 :toc: left
 :toclevels: 3
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
@@ -7,7 +7,7 @@ ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 :imagesdir: {rootdir}/media
 :sectnums:
 
-include::01-Chapter/Introduction.adoc[]
+include::01-Chapter/Getting_Started.adoc[]
 
 include::02-Chapter/Hardware_Overview.adoc[]
 
@@ -19,4 +19,3 @@ include::05-Chapter/Linux_Kernel.adoc[]
 
 include::06-Chapter/Yocto_Project.adoc[]
 
-include::LICENSE.adoc[]
