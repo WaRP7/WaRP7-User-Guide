@@ -1,5 +1,5 @@
 [[introduction]]
-== Introduction
+== Getting started with WaRP7
 
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 ifndef::rootdir[:rootdir: ../]
@@ -58,9 +58,9 @@ image::warp.png[align=center]
 [[getting-started-with-hardware]]
 === Getting Started with Hardware
 
-. Connect NFC cables to IO board
+. Connect NFC antenna to IO board
 +
-.Where to connect the NFC cable
+.Where to connect the NFC antenna
 image::nfc_connectors.png[align=center]
 
 . Connect CPU board
