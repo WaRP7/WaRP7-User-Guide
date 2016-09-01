@@ -1,5 +1,5 @@
 = WaRP7: The IoT and Wearable Development Platform
-v0.53, Aug 16, 2016: User Guide
+v1.0, Sep 1st, 2016: User Guide Manual
 :toc: left
 :toclevels: 3
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
