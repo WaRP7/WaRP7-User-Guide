@@ -1,0 +1,11 @@
+[[Android]]
+== Android
+
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+ifndef::rootdir[:rootdir: ../]
+:imagesdir: {rootdir}/media
+
+=== Obtaining an Android image
+
+=== Updating an Android image
+
