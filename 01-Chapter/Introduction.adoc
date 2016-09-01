@@ -18,6 +18,8 @@ You can find help on how to create a pull request use https://help.github.com/ar
 In case of doubt about the content of this document, please also create an issue
 at https://github.com/WaRP7/WaRP7-User-Guide/issues.
 
+include::../LICENSE.adoc[]
+
 [[platform-purpose]]
 === Platform Purpose
 

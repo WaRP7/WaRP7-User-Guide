@@ -19,4 +19,3 @@ include::05-Chapter/Linux_Kernel.adoc[]
 
 include::06-Chapter/Yocto_Project.adoc[]
 
-include::LICENSE.adoc[]
