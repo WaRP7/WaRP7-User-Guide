@@ -47,7 +47,7 @@ $ sudo make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- modules_install
 INSTALL_MOD_PATH=/media/<user>/<rootfs partition>/lib/
 
 *Note:*
-If you don't have a rootfs on your WaRP7 partition, you can obtain one by following the steps on *Chapter 4.3 The Yocto Project*
+If you don't have a rootfs on your WaRP7 partition, you can obtain one by following the steps on *Chapter 6 The Yocto Project*
 
 Unmount the partitions using 
 
