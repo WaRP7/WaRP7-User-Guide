@@ -35,14 +35,18 @@ This will generate the U-Boot binary called u-boot.imx.
 
 === Updating an U-Boot image
 
-Setup WaRP7 for loading U-Boot:
+:sectnums!:
+==== Setup WaRP7 for loading U-Boot
+:sectnums:
 
 . Remove the CPU board from the base board then put switch 2 in the upper position
 . Reconnect the CPU board to the base board
 . Connect a USB to serial adapter between the host PC and WaRP7 (USB port on the base board)
 . Connect a USB cable between the OTG WaRP7 port and the host PC (USB port on the CPU board)
 
-Load U-Boot via USB:
+:sectnums!:
+==== Load U-Boot via USB
+:sectnums:
 
 Copy u-boot.imx to the imx_usb_loader folder.
 
@@ -81,4 +85,23 @@ Put WaRP7 board into normal boot mode (put the switch 2 in the lower position)
 Power up the board and the new updated U-Boot should boot from eMMC
 
 *Content based on:* http://git.denx.de/?p=u-boot.git;a=blob;f=board/warp7/README
+
+:sectnums!:
+==== Boot partition
+:sectnums:
+
+It can be the case that the raw partition of your WaRP7 is unlocked. Burning an image that doesn't contain U-Boot into the eMMC while on this state erases the original U-Boot. To avoid this, the user can run the command below from the U-Boot prompt:
+
+[source,console]
+=> mmc partconf 0 1 1 0 
+
+This command makes the raw partition read-only and prevents u-boot from being changed.
+
+If you delete U-Boot by mistake and your board does not boot, please load U-boot from your host machine usign imx_usb_loader. Run the command above once you get to the U-boot prompt to prevent U-boot from being deleted again. You can follow the steps in the <<Load U-Boot via USB>> section to learn how to boot U-Boot from your host machine.
+
+Inversely if your partition is locked and would like to update U-Boot as described on this chapter, you can unlock the raw partition using the command:
+
+[source,console]
+=> mmc partconf 0 1 0 0 
+
 
