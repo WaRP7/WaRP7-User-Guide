@@ -17,9 +17,12 @@ expansion and debugging capabilities.
 [[featuresspecifications]]
 === Features/Specifications
 
-The features present on CPU Board are listed on <<CPU Board>>.
+.Temperature Range
+* The CPU & IO boards operate in the commercial temperature range, 0°C ~ 85°C
+* The LCD operates temperature range : 0°C ~ 70°C.
+* The battery operates temperature range : 0°C ~ 45°C.
 
-The board operates in the commercial temperature range, 0°C ~ 85°C.
+The features present on CPU Board are listed on <<CPU Board>>.
 
 .CPU Board
 [cols="2",options="header",]
