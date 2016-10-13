@@ -1,0 +1,23 @@
+== Use Cases
+
+This chapter demonstrates the enablement and use of the WaRP7 peripherals. Reference code for most of the WaRP7 peripherals can be found on the WaRP7 GitHub page under the https://github.com/WaRP7/warp7-unit-test/tree/master/unit_test[unit test] repository. 
+
+=== Wi-Fi
+
+WaRP7 supports the Murata 1DX Wi-Fi/BT module. On way to use this module is to enable it with the http://git.freescale.com/git/cgit.cgi/imx/imx-firmware.git/[enablement firmware provided by Murata].
+
+==== Murata's firmware enablement
+
+The Yocto Project WaRP7 image produces a kernel configured for this firmware and a rootfs which includes the firmware artifacts. A pre-built image resulting from the Yocto Project build can be found http://freescale.github.io/#download[here]. This image is an option but not a requirement for the use of this firmware. If you like to build your own image your can follow the steps on <<The Yocto Project>> chapter.
+
+After updating your WaRP7 with a Murata's firmware enabled image, you can run the https://github.com/WaRP7/warp7-unit-test/blob/master/unit_test/Wifi_BCM4343_enable.sh[Wi-Fi unit test] or the following commands to enable the WaRP7's Wi-Fi:
+
+[source,console]      
+$ modprobe bcmdhd
+$ ifconfig wlan0 up
+$ wpa_passphrase <Network Name> <Password> > /etc/wpa_supplicant.conf
+$ wpa_supplicant -B -i wlan0 -c /etc/wpa_supplicant.conf -D nl80211 &
+$ udhcpc -i wlan0
+
+After this steps you should be able to do a ping test to check your connection.
+
