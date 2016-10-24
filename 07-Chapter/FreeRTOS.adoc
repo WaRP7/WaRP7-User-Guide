@@ -1,0 +1,85 @@
+== FreeRTOS
+
+FreeRTOS is a real time operating system that can be used to run applications on the WaRP7 Cortex-M4 core. This operating system allows us to create applications that leverage multi-core functionality and that could potentially help us create power efficient and better performing applications when compared to its single core counterparts. 
+
+=== Host machine setup
+
+==== Setup Environment
+Install "cmake" to build the demo applications:
+
+[source,console] 
+$ sudo apt-get install cmake
+
+==== Toolchain and source code
+
+Download the required gcc toolchain from the https://launchpad.net/gcc-arm-embedded/5.0/5-2016-q2-update/+download/gcc-arm-none-eabi-5_4-2016q2-20160622-linux.tar.bz2[Launchpad website]
+
+Extract the toolchain to any location you like and follow the steps below. The variable 'ARMGCC_DIR' is required:
+
+[source,console] 
+$ export ARMGCC_DIR=<path to toolchain>/gcc-arm-none-eabi-5_4-2016q2/
+
+Clone the WaRP7 FreeRTOS source code from the https://github.com/WaRP7[WaRP7 GitHub repository]. You can use the following command to do so:
+
+[source,console] 
+$ git clone <substitute for final repo address>
+
+Move inside the `WaRP7_FreeRTOS/examples/warp7/demo_apps/` directory, the demo applications implemented for WaRP7 are located here.
+
+In order to build each application, move into the `<demo_name>/armgcc/` directory and use the `build_all.sh` script to compile the demo.
+
+[source,console] 
+$ sh ./build_all.sh
+
+After running the script, a "release" and "debug" folders are created. The `<demo_name>.bin` file can be found under the "debug" and "release" folder. 
+
+In order to run this demo, place the `<demo_name>.bin` file (from the debug or release folder) into the FAT partition of your WaRP7. To open said partition on the host machine, run the following command from the U-Boot prompt:
+
+[source,console] 
+$ ums 0 mmc 0
+
+This commands gets all the partitions on WaRP7 mounted on your host machine. Copy the `<demo_name>.bin` file directly into the partition that should already include your zImage and .dtb file.
+
+NOTE:: To reach the U-Boot prompt, press any key on your terminal console before the U-Boot countdown reaches zero.
+
+=== Running the "hello_world" demo
+
+To run this demo, two serial port connections need to be opened. Programs like Minicom on Linux or Putty on Windows can be used.
+Usually, this ports show up in Linux as `/dev/ttyUSB0` for the Cortex-A7 serial port and `/dev/ttyUSB1` for the Cortex-M4. The device numbering can change depending on the number of USB devices connected to the host machine. The convention used in the following steps is `/dev/ttyUSB0` and `/dev/ttyUSB1`.
+
+TIP:: In Windows, each serial connection has an assigned COM# port which name would be needed for the serial console program. WaRP7 opens two consequently numbered COM ports, the lower numbered for the Cortex-A7 and the higher numbered for the Cortex-M4 core. 
+
+The first step to run the demos is to power up the WaRP7 and stop the booting process. To do so, press any key on the `/dev/ttyUSB0` console before the U-Boot count reaches zero. Once the U-Boot prompt shows up in the console, type the following commands:
+
+[source,console]
+    => fatload mmc 0:1 0x7F8000 hello_world.bin
+    => dcache flush
+    => bootaux 0x7F8000
+
+The phrase "Hello World!" appears on the second serial console `/dev/ttyUSB1`
+
+=== Other demos
+
+The WaRP7 FreeRTOS source code comes with two other demos for different types of memories. To run the other demos, follow the same steps for building, loading the `<demo_name>.bin` and powering up the WaRP7. Substitute the commands on U-Boot with the following commands:
+
+==== Running "hello_world_ddr" demo
+
+The following demo stores the message "Hello World!" on the DDR memory using the Cortex-A7 core and reads it back usign the Cortex-M4 core.
+
+[source,console]
+    => fatload mmc 0:1 0x9FF00000 hello_world_ddr.bin
+    => dcache flush
+    => bootaux 0x9FF00000
+
+The phrase "Hello World!" appears on the second serial console `/dev/ttyUSB1`
+
+==== Running "hello_world_ocram" demo
+
+The following demo stores the message "Hello World!" on the OCRAM memory using the Cortex-A7 core and reads it back usign the Cortex-M4 core.
+
+[source,console]
+    => fatload mmc 0:1 0x00910000 hello_world_ocram.bin
+    => dcache flush
+    => bootaux 0x00910000
+
+The phrase "Hello World!" appears on the second serial console `/dev/ttyUSB1`
