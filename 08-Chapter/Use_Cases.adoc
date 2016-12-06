@@ -21,3 +21,108 @@ $ udhcpc -i wlan0
 
 After this steps you should be able to do a ping test to check your connection.
 
+=== Sensors
+
+The WaRP7 IO card includes 3 NXP sensors:
+
+* FXOS8700: 6-axis Sensor with integrated linear accelerometer and
+magnetometer.
+* FXAS21002: 3-Axis Digital Angular Rate Gyroscope.
+* MPL3115: 20 to 110kPa Absolute Digital Pressure Sensor.
+
+Each sensor has unique capabilities as described below and can be used in
+several applications. The sensors are controlled throught I2C and all the
+processes to enable and interact with each device will be addressed
+in the following topics.
+
+FXOS8700:: The FXOS8700 packaging includes 2 sensors, 3-axis accelerometer
+and 3-axis magnetometer, combining on a 6-axis sensor. The accelerometer has
+a 14-bit ADC resolution and the full-scale ranges of ±2g / ±4g / ±8g. The
+magnetometer has a 16-bit ADC resolution and a fixed magnetic measurement range
+of ±1200μT. The FXOS8700 can be used in several wearable applications such
+as: Motion detection, activity monitoring, sports monitoring, context
+awareness, and shock and vibration monitoring.
+
+FXAS21002:: The FXAS21002 is a 3-axis low-power gyroscope with 16 bit ADC
+resolution. The full-scale range is adjustable from ±250°/s to ±2000°/s. The
+sensor can be used in several applications such as: Game controller, mobile
++phones and tablets, industrial and consumer grade robots and others.
+
+MPL3115A3:: The MPL3115 is a piezoresistive absolute pressure sensor
+with 24 bit ADC resolution providing accurate pressure, altitude and
+temperature data. The sensor has a wide operating range of 20kPa to 110kPa,
+covering all surface elevations on earth. The sensor can be used in several
+applications such as: High-accurancy altimetry and barometry, smartphones,
+wearable devices and GPS applications.
+
+==== Enabling the sensors
+
+The sensors are disabled by default, each of them can be enabled by
+running the following command lines:
+
+[source,console]
+----
+FXOS8700:
+$ echo 1 > /sys/devices/virtual/misc/FreescaleAccelerometer/enable
+$ echo 1 > /sys/devices/virtual/misc/FreescaleMagnetometer/enable
+
+FXAS21002:
+$ echo 1 > /sys/devices/virtual/misc/FreescaleGyroscope/enable
+
+MPL3115A3:
+$ echo 1 > /sys/devices/virtual/input/input3/enable
+----
+
+WARNING: MPL3115A2 is already enabled by default when using kernel mainline
+driver.
+
+==== Reading the data
+
+The sensor can be tested on the Linux terminal through the `evtest`
+command line:
+
+[source,console]
+$ evtest
+No device specified, trying to scan all of /dev/input/event*
+Available devices:
+/dev/input/event0:      fxos8700
+/dev/input/event1:      fxas2100x
+/dev/input/event2:      30370000.snvs:snvs-powerkey
+/dev/input/event3:      mpl3115
+/dev/input/event4:      gpio-keys
+Select the device event number [0-4]: 0
+Input driver version is 1.0.1
+Input device ID: bus 0x18 vendor 0x0 product 0x0 version 0x0
+Input device name: "fxos8700"
+Supported events:
+  Event type 0 (EV_SYN)
+  Event type 3 (EV_ABS)
+    Event code 0 (ABS_X)
+      Value    173
+      Min     -511
+      Max      511
+    Event code 1 (ABS_Y)
+      Value   -533
+      Min     -511
+      Max      511
+    Event code 2 (ABS_Z)
+      Value    112
+      Min     -511
+      Max      511
+Properties:
+Testing ... (interrupt to exit)
+Event: time 1474468611.782637, type 3 (EV_ABS), code 0 (ABS_X), value 182
+Event: time 1474468611.782637, type 3 (EV_ABS), code 1 (ABS_Y), value -537
+Event: time 1474468611.782637, type 3 (EV_ABS), code 2 (ABS_Z), value 114
+Event: time 1474468611.782637, -------------- SYN_REPORT ------------
+Event: time 1474468612.182642, type 3 (EV_ABS), code 0 (ABS_X), value 179
+Event: time 1474468612.182642, type 3 (EV_ABS), code 1 (ABS_Y), value -530
+Event: time 1474468612.182642, type 3 (EV_ABS), code 2 (ABS_Z), value 113
+Event: time 1474468612.182642, -------------- SYN_REPORT ------------
+
+For kernel mainline users the pressure can be read in the
+file `in_pressure_raw`:
+
+[source,console]
+$ cat /sys/bus/iio/devices/iio:device0/in_pressure_raw
+378282
