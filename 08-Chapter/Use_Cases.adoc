@@ -126,3 +126,74 @@ file `in_pressure_raw`:
 [source,console]
 $ cat /sys/bus/iio/devices/iio:device0/in_pressure_raw
 378282
+
+=== Buttons
+
+WaRP7 IO Board has 3 buttons:
+
+* POR button: used to reset the board.
+* Power button: used to turn on/off SNVS.
+* User button: configurable for general purpose.
+
+==== Testing the buttons
+
+The buttons can be tested on the Linux terminal through the 'evtest' command line.
+
+To test the power button, enter the following command. Then press the button below
+the camera module on the WaRP7 IO Board to trigger the 'snvs-powerkey' event. Press 'CTRL+C'
+to exit.
+
+[source,console]
+----
+# evtest /dev/input/event2
+
+Input driver version is 1.0.1
+Input device ID: bus 0x19 vendor 0x0 product 0x0 version 0x0
+Input device name: "30370000.snvs:snvs-powerkey"
+Supported events:
+  Event type 0 (EV_SYN)
+  Event type 1 (EV_KEY)
+    Event code 116 (KEY_POWER)
+Properties:
+Testing ... (interrupt to exit)
+Event: time 1474471218.905702, type 1 (EV_KEY), code 116 (KEY_POWER), value 1
+Event: time 1474471218.905702, -------------- SYN_REPORT ------------
+Event: time 1474471219.025698, type 1 (EV_KEY), code 116 (KEY_POWER), value 0
+Event: time 1474471219.025698, -------------- SYN_REPORT ------------
+Event: time 1474471221.505696, type 1 (EV_KEY), code 116 (KEY_POWER), value 1
+Event: time 1474471221.505696, -------------- SYN_REPORT ------------
+Event: time 1474471221.565695, type 1 (EV_KEY), code 116 (KEY_POWER), value 0
+Event: time 1474471221.565695, -------------- SYN_REPORT ------------
+----
+
+To test the user button, enter the following command. Then press the middle button
+on the WaRP7 IO Board to trigger the 'gpio-keys' event. Press 'CTRL+C' to exit.
+
+[source,console]
+----
+# evtest /dev/input/event4
+
+Input driver version is 1.0.1
+Input device ID: bus 0x19 vendor 0x1 product 0x1 version 0x100
+Input device name: "gpio-keys"
+Supported events:
+  Event type 0 (EV_SYN)
+  Event type 1 (EV_KEY)
+    Event code 158 (KEY_BACK)
+Key repeat handling:
+  Repeat type 20 (EV_REP)
+    Repeat code 0 (REP_DELAY)
+      Value    250
+    Repeat code 1 (REP_PERIOD)
+      Value     33
+Properties:
+Testing ... (interrupt to exit)
+Event: time 1474471319.075727, type 1 (EV_KEY), code 158 (KEY_BACK), value 1
+Event: time 1474471319.075727, -------------- SYN_REPORT ------------
+Event: time 1474471319.225721, type 1 (EV_KEY), code 158 (KEY_BACK), value 0
+Event: time 1474471319.225721, -------------- SYN_REPORT ------------
+Event: time 1474471319.425716, type 1 (EV_KEY), code 158 (KEY_BACK), value 1
+Event: time 1474471319.425716, -------------- SYN_REPORT ------------
+Event: time 1474471319.535714, type 1 (EV_KEY), code 158 (KEY_BACK), value 0
+Event: time 1474471319.535714, -------------- SYN_REPORT ------------
+----
