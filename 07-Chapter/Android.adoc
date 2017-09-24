@@ -24,7 +24,7 @@ $ ~/bin/repo init -u https://github.com/WaRP7/android_manifest.git -b imx_L5.1.1
 $ ~/bin/repo sync
 # this command loads most needed repos. Therefore, it can take severalhours to load.
 $ cd ~/myandroid/prebuilts/gcc/linux-x86/arm
-$ git clone https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/arm/armeabi-4.6
+$ git clone https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/arm/arm-eabi-4.6
 $ cd arm-eabi-4.6
 $ git checkout android-4.4.3_r1
 
