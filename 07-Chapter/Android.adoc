@@ -89,7 +89,7 @@ $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf-imx_v7_android_defconfig
 $ cp ~/myandroid/out/target/product/warp7/root/ . -r
 $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- zImage
 $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- modules
-$ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- imx7s-warp.dtb
+$ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- imx7d-warp.dtb
 
 === Updating The Android image
 
