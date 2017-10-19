@@ -22,7 +22,7 @@ $ chmod a+x ~/bin/repo
 $ PATH=${PATH}:~/bin
 $ mkdir fsl-community-bsp
 $ cd fsl-community-bsp
-$ repo init -u https://github.com/Freescale/fsl-community-bsp-platform -b krogoth
+$ repo init -u https://github.com/Freescale/fsl-community-bsp-platform -b pyro
 $ repo sync
 
 You can also download a prebuilt image from http://freescale.github.io/#download and test it on your board.
