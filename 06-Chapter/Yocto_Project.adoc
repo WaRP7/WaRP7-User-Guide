@@ -34,7 +34,7 @@ After the download is completed, enable your environment:
 ==== Building
 
 [source,console]
-$ source setup-environment build
+$ MACHINE=imx7s-warp DISTRO=fslc-framebuffer source setup-environment build
 
 NOTE:: Please read the EULA and only press *y* if you accept it.
 
@@ -50,35 +50,6 @@ $ tree
     ├── local.conf
     ├── local.conf.sample
     └── templateconf.cfg
-
-Change file `conf/local.conf` to configure the build system to target the WaRP7 machine as the following example:
-
-[source]
-----
-MACHINE ??= 'imx7s-warp'
-DISTRO ?= 'poky'
-PACKAGE_CLASSES ?= "package_rpm"
-EXTRA_IMAGE_FEATURES ?= "debug-tweaks"
-USER_CLASSES ?= "buildstats image-mklibs"
-PATCHRESOLVE = "noop"
-BB_DISKMON_DIRS = "\
-    STOPTASKS,${TMPDIR},1G,100K \
-    STOPTASKS,${DL_DIR},1G,100K \
-    STOPTASKS,${SSTATE_DIR},1G,100K \
-    STOPTASKS,/tmp,100M,100K \
-    ABORT,${TMPDIR},100M,1K \
-    ABORT,${DL_DIR},100M,1K \
-    ABORT,${SSTATE_DIR},100M,1K \
-    ABORT,/tmp,10M,1K"
-PACKAGECONFIG_append_pn-qemu-native = " sdl"
-PACKAGECONFIG_append_pn-nativesdk-qemu = " sdl"
-CONF_VERSION = "1"
-
-DL_DIR ?= "${BSPDIR}/downloads/"
-ACCEPT_FSL_EULA = "1"
-----
-
-NOTE:: The WaRP7 machine name is **imx7s-warp**
 
 After configuring the Yocto Project to use WaRP7 machine, you can build any desired image, such as:
 
@@ -127,3 +98,5 @@ $ gunzip core-image-base-imx7s-warp-20160808155513.rootfs.sdcard.gz
 $ sudo dd if=core-image-base-imx7s-warp-20160808155513.rootfs.sdcard of=/dev/sdX
 
 It may take few minutes. As soon as the dd command is finished, you can reboot the board.
+
+=== 
