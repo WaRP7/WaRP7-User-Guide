@@ -22,7 +22,7 @@ $ chmod a+x ~/bin/repo
 $ PATH=${PATH}:~/bin
 $ mkdir fsl-community-bsp
 $ cd fsl-community-bsp
-$ repo init -u https://github.com/Freescale/fsl-community-bsp-platform -b pyro
+$ repo init -u https://github.com/Freescale/fsl-community-bsp-platform -b rocko
 $ repo sync
 
 You can also download a prebuilt image from http://freescale.github.io/#download and test it on your board.
@@ -56,35 +56,7 @@ After configuring the Yocto Project to use WaRP7 machine, you can build any desi
 [source,console]
 $ bitbake fsl-image-machine-test
 
-The first build can take several hours (depending on your machine). When it completes the result can be found on `tmp/deploy/image/imx7s-warp` as show in the following example:
-
-[source,console]
-$ ls -l tmp/deploy/images/imx7s-warp/
-total 263084
--rw-r--r-- 1 user user 67108864 Ago  8 11:58 core-image-base-imx7s-warp-20160808141615.rootfs.ext4
--rw-r--r-- 1 user user     9568 Ago  8 11:58 core-image-base-imx7s-warp-20160808141615.rootfs.manifest
--rw-r--r-- 1 user user 83886080 Ago  8 11:58 core-image-base-imx7s-warp-20160808141615.rootfs.sdcard
--rw-r--r-- 1 user user 67108864 Ago  8 12:55 core-image-base-imx7s-warp-20160808155513.rootfs.ext4
--rw-r--r-- 1 user user     9568 Ago  8 12:55 core-image-base-imx7s-warp-20160808155513.rootfs.manifest
--rw-r--r-- 1 user user 83886080 Ago  8 12:55 core-image-base-imx7s-warp-20160808155513.rootfs.sdcard
-lrwxrwxrwx 1 user user       53 Ago  8 12:55 core-image-base-imx7s-warp.ext4 -> core-image-base-imx7s-warp-20160808155513.rootfs.ext4
-lrwxrwxrwx 1 user user       57 Ago  8 12:55 core-image-base-imx7s-warp.manifest -> core-image-base-imx7s-warp-20160808155513.rootfs.manifest
-lrwxrwxrwx 1 user user       58 Ago  8 12:55 core-image-base-imx7s-warp.sdcard.gz -> core-image-base-imx7s-warp-20160808155513.rootfs.sdcard.gz
--rw-rw-r-- 2 user user   804917 Ago  8 10:28 modules--4.1-1.0.x+git0+b8fb01d418-r0-imx7s-warp-20160808132254.tgz
-lrwxrwxrwx 1 user user       67 Ago  8 10:28 modules-imx7s-warp.tgz -> modules--4.1-1.0.x+git0+b8fb01d418-r0-imx7s-warp-20160808132254.tgz
--rw-r--r-- 2 user user      294 Ago  8 12:55 README_-_DO_NOT_DELETE_FILES_IN_THIS_DIRECTORY.txt
-lrwxrwxrwx 1 user user       47 Ago  8 10:31 u-boot.imx -> u-boot-sd-v2016.07+gitAUTOINC+ae973bc45d-r0.imx
-lrwxrwxrwx 1 user user       47 Ago  8 10:31 u-boot-imx7s-warp.imx -> u-boot-sd-v2016.07+gitAUTOINC+ae973bc45d-r0.imx
-lrwxrwxrwx 1 user user       47 Ago  8 10:31 u-boot-imx7s-warp.imx-sd -> u-boot-sd-v2016.07+gitAUTOINC+ae973bc45d-r0.imx
-lrwxrwxrwx 1 user user       47 Ago  8 10:31 u-boot.imx-sd -> u-boot-sd-v2016.07+gitAUTOINC+ae973bc45d-r0.imx
--rwxr-xr-x 2 user user   347136 Ago  8 10:31 u-boot-sd-v2016.07+gitAUTOINC+ae973bc45d-r0.imx
-lrwxrwxrwx 1 user user       66 Ago  8 10:28 zImage -> zImage--4.1-1.0.x+git0+b8fb01d418-r0-imx7s-warp-20160808132254.bin
--rw-r--r-- 2 user user  6514048 Ago  8 10:28 zImage--4.1-1.0.x+git0+b8fb01d418-r0-imx7s-warp-20160808132254.bin
--rw-r--r-- 2 user user    33845 Ago  8 10:28 zImage--4.1-1.0.x+git0+b8fb01d418-r0-imx7s-warp-20160808132254.dtb
-lrwxrwxrwx 1 user user       66 Ago  8 10:28 zImage-imx7s-warp.bin -> zImage--4.1-1.0.x+git0+b8fb01d418-r0-imx7s-warp-20160808132254.bin
-lrwxrwxrwx 1 user user       66 Ago  8 10:28 zImage-imx7s-warp.dtb -> zImage--4.1-1.0.x+git0+b8fb01d418-r0-imx7s-warp-20160808132254.dtb
-
-The complete image (rootfs + kernel)  is **core-image-base-imx7s-warp-20160808155513.rootfs.sdcard.gz** (the numbers on image name vary depending on build date)
+The first build can take several hours (depending on your machine). When it completes the result can be found on `tmp/deploy/image/imx7s-warp`.
 
 === Steps to update the image
 
@@ -94,8 +66,8 @@ The complete image (rootfs + kernel)  is **core-image-base-imx7s-warp-2016080815
 
 .host steps
 [source,console]
-$ gunzip core-image-base-imx7s-warp-20160808155513.rootfs.sdcard.gz
-$ sudo dd if=core-image-base-imx7s-warp-20160808155513.rootfs.sdcard of=/dev/sdX
+$ gunzip -f <image-name>.wic.gz
+$ sudo dd if=<image-name>.wic of=/dev/sdX
 
 It may take few minutes. As soon as the dd command is finished, you can reboot the board.
 
