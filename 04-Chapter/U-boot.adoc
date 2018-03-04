@@ -26,9 +26,9 @@ Go inside the u-boot-fslc folder, build U-Boot for WaRP7:
 
 [source,console]
 $ cd u-boot-fslc/
-$ git checkout -b <name_local_branch> origin/2017.03+fslc
+$ git checkout -b <name_local_branch> origin/2017.11+fslc
 $ make mrproper
-$ make warp7_config
+$ make warp7_secure_defconfig
 $ make
 
 This will generate the U-Boot binary called u-boot.imx.
