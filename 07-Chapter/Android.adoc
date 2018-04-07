@@ -111,7 +111,7 @@ Copy imx7s-warp.dtb to the fat32 partition.
 
 Use dd utility to flash the system image to the second partition:
 [source,console]
-$ sudo dd if=~/myandroid/out/target/product/warp7/system.img of=/dev/sdX
+$ sudo dd if=~/myandroid/out/target/product/warp7/system.img of=/dev/sdX status=progress
 
 Unmount the partitions using:
 [source,console]
