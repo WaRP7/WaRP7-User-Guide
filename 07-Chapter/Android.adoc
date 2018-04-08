@@ -85,7 +85,7 @@ $ git checkout -b <name_your_branch> origin/linux_4.1.29
 Use the commands below to compile:
 [source,console]
 $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- mrproper
-$ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf-imx_v7_android_defconfig
+$ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- imx_v7_android_defconfig
 $ cp ~/myandroid/out/target/product/warp7/root/ . -r
 $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- zImage
 $ make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- modules
@@ -107,7 +107,7 @@ Create 3 partitions, a 100MB FAT32 partition and a 500MB ext4 partition for syst
 
 Copy zImage to the fat32 partition.
 
-Copy imx7s-warp.dtb to the fat32 partition.
+Copy imx7d-warp.dtb to the fat32 partition.
 
 Use dd utility to flash the system image to the second partition:
 [source,console]
