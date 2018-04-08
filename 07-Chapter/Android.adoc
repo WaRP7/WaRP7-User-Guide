@@ -120,5 +120,7 @@ $ sudo umount /dev/sd<X>
 In u-boot prompt, hit *Ctrl+C*, to cancel the mounted mmc. Then set the bootargs to boot Android:
 [source,console]
 => setenv bootargs console=ttymxc0,115200 init=/init androidboot.hardware=freescale androidboot.selinux=disabled;
+=> setenv fdt_file imx7d-warp.dtb
+=> saveenv
 
 Reboot your board, Android must be up and running.
